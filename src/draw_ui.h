@@ -36,4 +36,10 @@
 
 int redraw_ui();
 
+extern unsigned int cur_line;
+extern unsigned int cur_column;
+
+extern unsigned int cur_top;
+extern unsigned int cur_left;
+
 #endif //VIC_DRAW_UI_H

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "file_sl.h"
-#include "lines_list.h"
+#include "file_struct.h"
 
 int v_load_file(const char *filename, v_file_text *file_struct)
 {

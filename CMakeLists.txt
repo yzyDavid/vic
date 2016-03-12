@@ -6,8 +6,8 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 
 set(SOURCE_FILES_TEST src/test/testmain.c src/test/printf_color.c)
 set(SOURCE_FILES src/main.c
-        src/lines_list.c
-        src/lines_list.h
+        src/file_struct.c
+        src/file_struct.h
         src/draw_ui.c
         src/draw_ui.h
         src/file_sl.c

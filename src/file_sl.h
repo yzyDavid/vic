@@ -5,7 +5,7 @@
 #ifndef VIC_FILE_SL_H
 #define VIC_FILE_SL_H
 
-#include "lines_list.h"
+#include "file_struct.h"
 
 int v_load_file(const char *filename, v_file_text*);
 int v_save_file(const char *filename, v_file_text*);

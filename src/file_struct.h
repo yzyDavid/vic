@@ -8,6 +8,8 @@
 
 #define LINE_LENGTH 300
 
+extern char cur_file_name[300];
+
 typedef struct v_line_s {
     int text[LINE_LENGTH];
     struct v_line_s *next;
@@ -16,5 +18,7 @@ typedef struct v_line_s {
 typedef struct {
     v_line *head;
 } v_file_text;
+
+extern v_file_text cur_file;
 
 #endif //VIC_LINES_LIST_H

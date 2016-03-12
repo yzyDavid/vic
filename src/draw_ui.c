@@ -6,8 +6,10 @@
 #include "draw_ui.h"
 
 unsigned int cur_line;
-unsigned int cur_page;
 unsigned int cur_column;
+
+unsigned int cur_top;
+unsigned int cur_left;
 
 int redraw_ui()
 {
@@ -27,7 +29,7 @@ int redraw_ui()
 
 
     //Line 3 to 23
-    for(int i=2;i<23;i++)
+    for (int i = 3; i < 23; i++)
     {
         printf("\n");
     }
