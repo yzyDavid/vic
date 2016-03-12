@@ -9,7 +9,7 @@
 static struct termios disabled;
 static struct termios enabled;
 
-int init_dispaly_back()
+int init_display_back()
 {
     tcgetattr(0, &enabled);
     disabled = enabled;
@@ -19,7 +19,7 @@ int init_dispaly_back()
     disabled.c_cc[VTIME] = 0;
 }
 
-int diasble_display_back()
+int disable_display_back()
 {
     tcsetattr(0, TCSANOW, &disabled);
 }

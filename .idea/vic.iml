@@ -2,18 +2,20 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/file_sl.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/printf_color.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/testmain.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/printf_color.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/termios_set.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/file_sl.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/file_sl.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/lines_list.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main_loop.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/termios_set.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main_loop.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/lines_list.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lines_list.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/bin" />
     </content>

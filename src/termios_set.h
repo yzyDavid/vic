@@ -9,8 +9,8 @@
 #ifndef VIC_TERMIOS_SET_H
 #define VIC_TERMIOS_SET_H
 
-int init_dispaly_back();
-int diasble_display_back();
+int init_display_back();
+int disable_display_back();
 int enable_display_back();
 
 #endif //VIC_TERMIOS_SET_H
