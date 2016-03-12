@@ -52,6 +52,9 @@ static int normal_mode_process(int keydown)
         case 'k':
             break;
 
+        case 'w':   //[W]rite file.
+            break;
+
         default:
             break;
     }

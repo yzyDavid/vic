@@ -7,6 +7,8 @@
 #include "file_sl.h"
 #include "file_struct.h"
 
+//This program convert all the tabs to 4 spaces.
+
 int v_load_file(const char *filename, v_file_text *file_struct)
 {
     FILE *fp;
