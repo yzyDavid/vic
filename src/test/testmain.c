@@ -25,6 +25,7 @@ int main()
     while ((input = getchar()) != 'q')
     {
         printf("input=%c\n", input);
+        printf("ASCII code=%x\n", input);
     }
 
     tcsetattr(0, TCSANOW, &save);

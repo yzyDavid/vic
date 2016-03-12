@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 project(vic)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wall")
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
 
 set(SOURCE_FILES_TEST src/test/testmain.c src/test/printf_color.c)

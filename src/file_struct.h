@@ -8,6 +8,9 @@
 
 #define LINE_LENGTH 300
 
+#define UNCHANGED 0
+#define CHANGED 1
+
 extern char cur_file_name[300];
 
 typedef struct v_line_s {
@@ -19,6 +22,9 @@ typedef struct {
     v_line *head;
 } v_file_text;
 
-extern v_file_text cur_file;
+extern v_file_text *cur_file;
+
+v_line *get_line(v_file_text *file, unsigned int line);
+int get_char(v_line *line, unsigned int position);
 
 #endif //VIC_LINES_LIST_H

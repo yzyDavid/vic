@@ -19,7 +19,7 @@ int v_load_file(const char *filename, v_file_text *file_struct)
         return -1;
     }
 
-    file_struct = malloc(sizeof(v_file_text));
+//    file_struct = malloc(sizeof(v_file_text));
     file_struct->head = malloc(sizeof(v_line));
     cur_line = file_struct->head;
     cur_char = cur_line->text;
@@ -49,7 +49,7 @@ int v_load_file(const char *filename, v_file_text *file_struct)
 int v_save_file(const char *filename, v_file_text *file_struct)
 {
     FILE *fp;
-    int ch;
+//    int ch;
     v_line *cur_line;
     int *cur_char;
 
@@ -64,7 +64,7 @@ int v_save_file(const char *filename, v_file_text *file_struct)
     {
         while (cur_char)
         {
-            fputc((int) cur_char, fp);
+            fputc(*cur_char, fp);
             cur_char++;
         }
         fputc('\n', fp);
