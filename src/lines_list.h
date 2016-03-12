@@ -9,7 +9,7 @@
 #define LINE_LENGTH 300
 
 typedef struct v_line_s {
-    char text[LINE_LENGTH];
+    int text[LINE_LENGTH];
     struct v_line_s *next;
 } v_line;
 
