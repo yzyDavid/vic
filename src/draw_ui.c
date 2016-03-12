@@ -3,3 +3,8 @@
 //
 
 #include "draw_ui.h"
+
+int redraw_ui()
+{
+    return 0;
+}
