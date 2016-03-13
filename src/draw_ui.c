@@ -127,3 +127,4 @@ int set_cursor_pos(int x, int y)
     printf("\33[%d;%dH", y, x);
     return 0;
 }
+

@@ -98,7 +98,7 @@ static int normal_mode_process(int key_down)
 
         case '2':
         case 's':
-            v_save_file(cur_file_name,cur_file);
+            v_save_file(cur_file_name, cur_file);
             break;
 
         default:
@@ -139,7 +139,7 @@ int cursor_left()
         cur_column++;
         return 0;
     }
-    if (cur_column > 1)
+    else if (cur_column > 1)
     {
         return 1;
     }
@@ -176,11 +176,55 @@ int cursor_right()
 
 int cursor_up()
 {
+    unsigned int length = 0;
+    if (cur_line == 1 && cur_top == 1)
+    {
+        return 0;
+    }
+    else if (cur_line > 1)
+    {
+        cur_line--;
+        length = (int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
+        if (length < cur_column)
+        {
+            cur_column = length;
+        }
+        return 1;
+    }
+    else if (cur_top > 1)
+    {
+        roll_downward(-1);
+        return 1;
+    }
     return -1;
 }
 
 int cursor_down()
 {
+    unsigned int lines = get_total_lines(cur_file);
+    cur_line++;
+    if (!is_position_in_file())
+    {
+        if(lines >= cur_line)
+        {
+
+        }
+        else
+        {
+            --cur_line;
+            return 0;
+        }
+    }
+    else if (cur_line >= SCREEN_LINES)
+    {
+        --cur_line;
+        roll_downward(1);
+        return 1;
+    }
+    else if (cur_line < SCREEN_LINES)
+    {
+        return 1;
+    }
     return -1;
 }
 

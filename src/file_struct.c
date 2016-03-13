@@ -32,10 +32,10 @@ int get_char(v_line *line, unsigned int position)
     return line->text[position - 1];
 }
 
-int get_total_lines(v_file_text *file)
+unsigned int get_total_lines(v_file_text *file)
 {
     v_line *current_line = file->head;
-    int count = 0;
+    unsigned int count = 0;
     while (current_line != NULL)
     {
         count++;
