@@ -14,19 +14,31 @@ char cur_file_name[300];
 //use this function tp make sure wrong pointer isn't used.
 v_line *get_line(v_file_text *file, unsigned int line)
 {
-    v_line *cur_line = file->head;
+    v_line *current_line = file->head;
     for (int i = 0; i < line - 1; i++)
     {
-        cur_line = cur_line->next;
-        if (cur_line == NULL)
+        current_line = current_line->next;
+        if (current_line == NULL)
         {
             return 0;
         }
     }
-    return cur_line;
+    return current_line;
 }
 
 int get_char(v_line *line, unsigned int position)
 {
     return line->text[position - 1];
+}
+
+int get_total_lines(v_file_text *file)
+{
+    v_line *current_line = file->head;
+    int count = 0;
+    while (current_line != NULL)
+    {
+        count++;
+        current_line = current_line->next;
+    }
+    return count;
 }

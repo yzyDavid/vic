@@ -18,9 +18,12 @@ unsigned int cur_left;
 
 int redraw_ui()
 {
-    char title_bar[CONSOLE_COLUMNS] = "vic - ";
-    char menu_bar[CONSOLE_COLUMNS] = "File[1]                                                          -- menu --";
-    char status_bar[CONSOLE_COLUMNS] = "status";
+    char title_bar[CONSOLE_COLUMNS + 1] =
+            "vic - ";
+    char menu_bar[CONSOLE_COLUMNS + 1] =
+            "New File[1] Save[2]                                                   -- menu --";
+    char status_bar[CONSOLE_COLUMNS + 1] =
+            "status:                                                                         ";
     if (cur_file_name[0] == 0)
         strcat(title_bar, "New File");
     else
@@ -46,12 +49,21 @@ int redraw_ui()
     //actually a screen contains 21 lines.
     for (int i = 0; i < 21; i++)
     {
+        int finished_flag = 0;
         v_line *current_line = get_line(cur_file, i + cur_top);
         if (current_line != NULL)
         {
             for (int j = 0; j < 80; j++)
             {
-                printf("%c", current_line->text[cur_left + j - 1]);
+                if (finished_flag || current_line->text[cur_left + j - 1] == 0)
+                {
+                    finished_flag = 1;
+                    printf(" ");
+                }
+                else
+                {
+                    printf("%c", current_line->text[cur_left + j - 1]);
+                }
             }
         }
         printf("\n");

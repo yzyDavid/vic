@@ -11,6 +11,8 @@
 #define UNCHANGED 0
 #define CHANGED 1
 
+extern int changed_flag;
+
 extern char cur_file_name[300];
 
 typedef struct v_line_s {
@@ -26,5 +28,6 @@ extern v_file_text *cur_file;
 
 v_line *get_line(v_file_text *file, unsigned int line);
 int get_char(v_line *line, unsigned int position);
+int get_total_lines(v_file_text *file);
 
 #endif //VIC_LINES_LIST_H

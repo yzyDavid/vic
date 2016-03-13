@@ -7,21 +7,28 @@
 #include "main_loop.h"
 #include "file_struct.h"
 #include "draw_ui.h"
+#include "termios_set.h"
 
-static int normal_mode_process(int keydown);
+static int normal_mode_process(int key_down);
+
+static int insert_mode_process(int key_down);
 
 int mode_flag = NORMAL_MODE;
 
 int main_loop()
 {
     //This function assume the display back is disabled.
-    int keydown;
-    while ((keydown = getchar()))
+    int key_down;
+    while ((key_down = getchar()))
     {
         switch (mode_flag)
         {
             case NORMAL_MODE:
-                normal_mode_process(keydown);
+                normal_mode_process(key_down);
+                break;
+
+            case INSERT_MODE:
+                insert_mode_process(key_down);
                 break;
 
             default:
@@ -32,14 +39,23 @@ int main_loop()
     return 0;
 }
 
-static int normal_mode_process(int keydown)
+static int normal_mode_process(int key_down)
 {
-    switch (keydown)
+    switch (key_down)
     {
-        case 'q':
-            exit(0);
+        case 'q':   //quit, is saved should be checked.
+            if (changed_flag == UNCHANGED)
+            {
+                enable_display_back();
+                exit(0);
+            }
+            else
+            {
+
+            }
             break;
 
+            //belows hjkl for cursor moving.
         case 'h':
             break;
 
@@ -52,7 +68,32 @@ static int normal_mode_process(int keydown)
         case 'k':
             break;
 
-        case 'w':   //[W]rite file.
+        case 'w':   //word forward.
+            break;
+
+        case 'i':   //insert.
+            mode_flag = INSERT_MODE;
+            break;
+
+        case 'a':   //append.
+            mode_flag = INSERT_MODE;
+            break;
+
+        case 'd':   //delete.
+            break;
+
+        default:
+            break;
+    }
+    return 0;
+}
+
+static int insert_mode_process(int key_down)
+{
+    switch (key_down)
+    {
+        case '\x1b':  //Esc
+            mode_flag = NORMAL_MODE;
             break;
 
         default:

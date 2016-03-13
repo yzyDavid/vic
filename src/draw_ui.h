@@ -8,6 +8,10 @@
 #define CONSOLE_LINES 24
 #define CONSOLE_COLUMNS 80
 
+/*Use
+ * man console_codes
+ * to show the declare of params below.
+ */
 #define NONE                 "\e[0m"
 #define BLACK                "\e[0;30m"
 #define L_BLACK              "\e[1;30m"
@@ -33,6 +37,9 @@
 #define HIDE                 "\e[8m"
 #define CLEAR                "\e[2J"
 #define CLRLINE              "\r\e[K" //or "\e[1K\r"
+
+#define HIDE_CURSOR     "\e[?25l"
+#define SHOW_CURSOR     "\e[?25h"
 
 int redraw_ui();
 

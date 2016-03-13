@@ -25,7 +25,7 @@ int init_display_back()
 int disable_display_back()
 {
     tcsetattr(0, TCSANOW, &disabled);
-    printf(HIDE);
+    printf(HIDE_CURSOR);
     return 0;
 }
 
@@ -33,6 +33,7 @@ int enable_display_back()
 {
     tcsetattr(0, TCSANOW, &enabled);
     printf(NONE);
+    printf(SHOW_CURSOR);
     return 0;
 }
 

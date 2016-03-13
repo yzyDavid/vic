@@ -31,15 +31,29 @@ int v_load_file(const char *filename, v_file_text *file_struct)
     {
         if (ch != '\n')
         {
-            *cur_char = ch;
-            cur_char++;
+            if (ch == '\t')
+            {
+                *cur_char = ' ';
+                cur_char++;
+                *cur_char = ' ';
+                cur_char++;
+                *cur_char = ' ';
+                cur_char++;
+                *cur_char = ' ';
+                cur_char++;
+            }
+            else
+            {
+                *cur_char = ch;
+                cur_char++;
+            }
         }
         else
         {
             cur_line->next = malloc(sizeof(v_line));
             cur_line = cur_line->next;
             cur_line->next = NULL;
-            cur_char = 0;
+            *cur_char = 0;
             cur_char = cur_line->text;
         }
     }
