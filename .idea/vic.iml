@@ -5,17 +5,19 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/file_sl.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/termios_set.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/file_struct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main_loop.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/highlight.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/printf_color.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/printf_color.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/testmain.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/file_struct.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/normal_loop.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/file_struct.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/normal_loop.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/insert_loop.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main_loop.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/highlight.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/insert_loop.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main_loop.c" isTestSource="false" />
