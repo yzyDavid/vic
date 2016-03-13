@@ -150,6 +150,7 @@ int cursor_up()
     {
         cur_line--;
         length = (int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
+        length = (length == 0) ? 1 : length;
         if (length < cur_column)
         {
             cur_column = length;
@@ -165,24 +166,46 @@ int cursor_up()
 }
 
 //Have bugs in calc position.
+// test data:
+// cur_left     21
+// cur_column   80
+// length       0
 int cursor_down()
 {
     unsigned int lines = get_total_lines(cur_file);
     unsigned int length;
-    length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
     cur_line++;
+    length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
+    length = (length == 0) ? 1 : length;
     if (!is_position_in_file())
     {
+        //When the cursor is at the end of a line
+        //length == cur_left + cur_column -1
+        //always works.
         if (lines >= cur_line + cur_top - 1)
         {
-            if (cur_column + cur_left - 1 > length)
+            /*
+            if (length > cur_left + SCREEN_COLUMNS)
             {
-
+                cur_column = SCREEN_COLUMNS;
+                cur_left = length - cur_column + 1;
+                return 1;
             }
             else
             {
-
+                cur_column = length - cur_left + 1;
+                return 1;
             }
+             */
+            int tmp = 0;
+            tmp = length - cur_left + 1;
+            if (tmp < 1)
+            {
+                cur_left -= 1 - tmp;
+                tmp = 1;
+            }
+            cur_column = (unsigned int) tmp;
+            return 1;
         }
         else
         {
@@ -208,6 +231,7 @@ int goto_line_end()
     unsigned int actual_column = 0;
     unsigned int length = 0;
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
+    length = (length == 0) ? 1 : length;
     actual_column = cur_left + cur_column - 1;
     if (length > actual_column)
     {
