@@ -10,6 +10,7 @@
 #include "main_loop.h"
 #include "file_struct.h"
 #include "file_sl.h"
+#include "main.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,16 +28,23 @@ int main(int argc, char *argv[])
             break;
     }
 
-    cur_top = 1;
-    cur_left = 1;
-    cur_line = 1;
-    cur_column = 1;
+    init_global();
 
     redraw_ui();
     init_display_back();
     disable_display_back();
     main_loop();
     enable_display_back();
+
+    return 0;
+}
+
+int init_global()
+{
+    cur_top = 1;
+    cur_left = 1;
+    cur_line = 1;
+    cur_column = 1;
 
     return 0;
 }

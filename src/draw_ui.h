@@ -2,6 +2,11 @@
 // Created by yzy on 3/12/16.
 //
 
+/*
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedMacroInspection"
+ */
+
 #ifndef VIC_DRAW_UI_H
 #define VIC_DRAW_UI_H
 
@@ -43,6 +48,13 @@
 
 int redraw_ui();
 
+int gen_status_bar(char *status_bar);
+
+int roll_rightward(int repeat);
+int roll_downward(int repeat);
+
+int set_cursor_pos(int x, int y);
+
 extern unsigned int cur_line;
 extern unsigned int cur_column;
 
@@ -50,3 +62,7 @@ extern unsigned int cur_top;
 extern unsigned int cur_left;
 
 #endif //VIC_DRAW_UI_H
+
+/*
+#pragma clang diagnostic pop
+ */

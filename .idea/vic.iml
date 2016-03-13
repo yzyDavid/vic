@@ -9,13 +9,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/printf_color.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/termios_set.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/file_sl.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main_loop.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/termios_set.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main_loop.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/file_struct.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/draw_ui.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/bin" />
     </content>
@@ -24,14 +25,12 @@
       <library name="Header Search Paths">
         <CLASSES>
           <root url="file:///usr/include" />
-          <root url="file:///usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed" />
-          <root url="file:///usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include" />
+          <root url="file:///usr/lib/clang/3.7.1/include" />
           <root url="file:///usr/local/include" />
         </CLASSES>
         <SOURCES>
           <root url="file:///usr/include" />
-          <root url="file:///usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed" />
-          <root url="file:///usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include" />
+          <root url="file:///usr/lib/clang/3.7.1/include" />
           <root url="file:///usr/local/include" />
         </SOURCES>
       </library>

@@ -7,6 +7,7 @@
 
 #include "draw_ui.h"
 #include "file_struct.h"
+#include "main_loop.h"
 
 //This globals defines the position of "cursor".
 //relative to the line3-23 (actually contains the file) part.
@@ -26,6 +27,9 @@ int redraw_ui()
             "New File[1] Save[2]                                                   -- menu --";
     char status_bar[CONSOLE_COLUMNS + 1] =
             "status:                                                                        ";
+
+    gen_status_bar(status_bar);
+
     if (cur_file_name[0] == 0)
         strcat(title_bar, "New File");
     else
@@ -36,13 +40,13 @@ int redraw_ui()
 
     //Line 1
     printf(L_CYAN);
-    printf(title_bar);
+    printf("%s",title_bar);
     printf(NONE);
     printf("\n");
 
     //Line 2
     printf(L_GREEN);
-    printf(menu_bar);
+    printf("%s",menu_bar);
     printf(NONE);
     printf("\n");
 
@@ -73,8 +77,45 @@ int redraw_ui()
 
     //Line 24
     printf(L_BLUE);
-    printf(status_bar);
+    printf("%s",status_bar);
     printf(NONE);
 
+    set_cursor_pos(cur_column, cur_line + 2);
+
+    return 0;
+}
+
+int gen_status_bar(char *status_bar)
+{
+    switch (mode_flag)
+    {
+        case NORMAL_MODE:
+            break;
+
+        case INSERT_MODE:
+            break;
+
+        default:
+            break;
+    }
+    return 0;
+}
+
+//repeat can be assigned to minus number to perform rolling left.
+//return -1 for error.
+//return number of units actually rolled.
+int roll_rightward(int repeat)
+{
+    return -1;
+}
+
+int roll_downward(int repeat)
+{
+    return -1;
+}
+
+int set_cursor_pos(int x, int y)
+{
+    printf("\33[%d;%dH", y, x);
     return 0;
 }

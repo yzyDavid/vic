@@ -17,16 +17,7 @@ int init_display_back();
 int disable_display_back();
 int enable_display_back();
 
-inline int hide_cursor()
-{
-    printf(HIDE_CURSOR);
-    return 0;
-}
-
-inline int show_cursor()
-{
-    printf(SHOW_CURSOR);
-    return 0;
-}
+int hide_cursor();
+int show_cursor();
 
 #endif //VIC_TERMIOS_SET_H

@@ -31,6 +31,9 @@ int main_loop()
                 insert_mode_process(key_down);
                 break;
 
+            case BOTTOMLINE_MODE:
+                break;
+
             default:
                 break;
         }
