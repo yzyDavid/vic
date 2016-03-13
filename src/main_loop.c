@@ -96,6 +96,10 @@ static int normal_mode_process(int key_down)
         case 'o':   //open new line.
             break;
 
+        case '$':
+            goto_line_end();
+            break;
+
         case '2':
         case 's':
             v_save_file(cur_file_name, cur_file);
@@ -129,6 +133,8 @@ static int insert_mode_process(int key_down)
 //-1: exceptions.
 int cursor_left()
 {
+    unsigned int lines;
+    lines = get_total_lines(cur_file);
     if (cur_column == 1 && cur_left == 1)
     {
         return 0;
@@ -136,6 +142,10 @@ int cursor_left()
     cur_column--;
     if (!is_position_in_file())
     {
+        if (cur_line + cur_top - 1 <= lines)
+        {
+            return 1;
+        }
         cur_column++;
         return 0;
     }
@@ -161,7 +171,7 @@ int cursor_right()
         cur_column--;
         return 0;
     }
-    if (cur_column >= 80)
+    else if (cur_column >= 80)
     {
         --cur_column;
         roll_rightward(1);
@@ -193,21 +203,31 @@ int cursor_up()
     }
     else if (cur_top > 1)
     {
-        roll_downward(-1);
+        roll_downward(1);
         return 1;
     }
     return -1;
 }
 
+//Have bugs in calc position.
 int cursor_down()
 {
     unsigned int lines = get_total_lines(cur_file);
+    unsigned int length;
+    length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
     cur_line++;
     if (!is_position_in_file())
     {
-        if(lines >= cur_line)
+        if (lines >= cur_line + cur_top - 1)
         {
+            if (cur_column + cur_left - 1 > length)
+            {
 
+            }
+            else
+            {
+
+            }
         }
         else
         {
@@ -218,7 +238,7 @@ int cursor_down()
     else if (cur_line >= SCREEN_LINES)
     {
         --cur_line;
-        roll_downward(1);
+        roll_downward(-1);
         return 1;
     }
     else if (cur_line < SCREEN_LINES)
@@ -249,4 +269,27 @@ int is_position_in_file()
     }
 
     return 1;
+}
+
+int goto_line_end()
+{
+    unsigned int actual_column = 0;
+    unsigned int length = 0;
+    length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
+    actual_column = cur_left + cur_column - 1;
+    if (length > actual_column)
+    {
+        for (int i = 0; i < length - actual_column; i++)
+        {
+            cursor_right();
+        }
+    }
+    else
+    {
+        for (int i = 0; i < actual_column - length; i++)
+        {
+            cursor_left();
+        }
+    }
+    return 0;
 }

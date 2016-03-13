@@ -13,12 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="024c5e09-80b4-4630-aeb5-32d6edbc9a08" name="Default" comment="k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/draw_ui.c" afterPath="$PROJECT_DIR$/src/draw_ui.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/draw_ui.h" afterPath="$PROJECT_DIR$/src/draw_ui.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_struct.c" afterPath="$PROJECT_DIR$/src/file_struct.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_struct.h" afterPath="$PROJECT_DIR$/src/file_struct.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Debug/hello.txt" afterPath="$PROJECT_DIR$/bin/Debug/hello.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main_loop.c" afterPath="$PROJECT_DIR$/src/main_loop.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main_loop.h" afterPath="$PROJECT_DIR$/src/main_loop.h" />
     </list>
     <ignored path="vic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,14 +36,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main_loop.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main_loop.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main_loop.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5">
+              <caret line="218" column="4" selection-start-line="218" selection-start-column="4" selection-end-line="218" selection-end-column="4" />
               <folding>
                 <element signature="e#36#54#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hello.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/Debug/hello.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,11 +70,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="main_loop.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main_loop.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="draw_ui.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/draw_ui.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -107,16 +124,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hello.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bin/Debug/hello.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -138,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/file_sl.h" />
         <option value="$PROJECT_DIR$/colc_this.sh" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/src/main_loop.h" />
         <option value="$PROJECT_DIR$/res/todo_list.md" />
         <option value="$PROJECT_DIR$/src/main.h" />
         <option value="$PROJECT_DIR$/src/main.c" />
@@ -150,8 +156,9 @@
         <option value="$PROJECT_DIR$/src/file_struct.c" />
         <option value="$PROJECT_DIR$/src/file_struct.h" />
         <option value="$PROJECT_DIR$/src/draw_ui.h" />
-        <option value="$PROJECT_DIR$/src/main_loop.c" />
         <option value="$PROJECT_DIR$/bin/Debug/hello.txt" />
+        <option value="$PROJECT_DIR$/src/main_loop.h" />
+        <option value="$PROJECT_DIR$/src/main_loop.c" />
       </list>
     </option>
   </component>
@@ -764,14 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main_loop.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/termios_set.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -828,24 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/draw_ui.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main_loop.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="e#36#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/file_sl.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -856,11 +837,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/draw_ui.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/Debug/hello.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main_loop.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main_loop.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5">
+          <caret line="218" column="4" selection-start-line="218" selection-start-column="4" selection-end-line="218" selection-end-column="4" />
+          <folding>
+            <element signature="e#36#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
