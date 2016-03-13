@@ -6,5 +6,6 @@
 #define VIC_HIGHLIGHT_H
 
 extern char *c_highlight_list[];
+extern char *cplusplus_highlight_list[];
 
 #endif //VIC_HIGHLIGHT_H
