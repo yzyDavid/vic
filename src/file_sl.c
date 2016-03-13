@@ -84,6 +84,8 @@ int v_save_file(const char *filename, v_file_text *file_struct)
             cur_char++;
         }
         fputc('\n', fp);
+        cur_line = cur_line->next;
+        cur_char = cur_line->text;
     }
     while (cur_line->next != NULL);
     fclose(fp);
