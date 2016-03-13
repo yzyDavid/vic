@@ -25,7 +25,7 @@ int redraw_ui()
     char menu_bar[CONSOLE_COLUMNS + 1] =
             "New File[1] Save[2]                                                   -- menu --";
     char status_bar[CONSOLE_COLUMNS + 1] =
-            "status:                                                                         ";
+            "status:                                                                        ";
     if (cur_file_name[0] == 0)
         strcat(title_bar, "New File");
     else

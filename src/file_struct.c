@@ -42,3 +42,9 @@ int get_total_lines(v_file_text *file)
     }
     return count;
 }
+
+size_t get_length(v_line *line)
+{
+    return strlen((const char *) line->text);
+}
+

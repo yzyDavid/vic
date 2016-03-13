@@ -32,9 +32,6 @@ v_line *get_line(v_file_text *file, unsigned int line);
 int get_char(v_line *line, unsigned int position);
 int get_total_lines(v_file_text *file);
 
-inline size_t get_length(v_line *line)
-{
-    return strlen((const char *) line->text);
-}
+size_t get_length(v_line *line);
 
 #endif //VIC_LINES_LIST_H

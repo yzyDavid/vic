@@ -19,4 +19,6 @@ int cursor_right();
 int cursor_up();
 int cursor_down();
 
+int is_position_in_file();
+
 #endif //VIC_MAIN_LOOP_H

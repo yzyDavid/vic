@@ -56,6 +56,7 @@ static int normal_mode_process(int key_down)
             break;
 
             //belows hjkl for cursor moving.
+            //aiming to disable moving cursor outside the file part.
         case 'h':
             break;
 
@@ -80,6 +81,9 @@ static int normal_mode_process(int key_down)
             break;
 
         case 'd':   //delete.
+            break;
+
+        case 'o':   //open new line.
             break;
 
         default:
@@ -110,7 +114,17 @@ static int insert_mode_process(int key_down)
 //-1: exceptions.
 int cursor_left()
 {
-    return -1;
+    if (cur_column == 1 && cur_left == 1)
+    {
+        return 0;
+    }
+    cur_column--;
+    if (!is_position_in_file())
+    {
+        cur_column++;
+        return 0;
+    }
+    return 1;
 }
 
 int cursor_right()
@@ -126,4 +140,27 @@ int cursor_up()
 int cursor_down()
 {
     return -1;
+}
+
+//This function judge if the position of cursor is contained in the file.
+//return code:
+//1 for True
+//0 for False
+int is_position_in_file()
+{
+    unsigned int cur_file_line;
+    unsigned int cur_file_column;
+    cur_file_line = cur_top + cur_line - 1;
+    cur_file_column = cur_left + cur_column - 1;
+
+    if (cur_file_line > get_total_lines(cur_file))
+    {
+        return 0;
+    }
+    if (cur_file_column > get_length(get_line(cur_file, cur_file_line)))
+    {
+        return 0;
+    }
+
+    return 1;
 }
