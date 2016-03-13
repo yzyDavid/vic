@@ -48,6 +48,10 @@
 
 int redraw_ui();
 
+extern char title_bar[CONSOLE_COLUMNS + 1];
+extern char menu_bar[CONSOLE_COLUMNS + 1];
+extern char status_bar[CONSOLE_COLUMNS + 1];
+
 int gen_status_bar(char *status_bar);
 
 int roll_rightward(int repeat);

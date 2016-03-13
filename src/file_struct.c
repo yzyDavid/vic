@@ -4,6 +4,7 @@
 //
 
 #include <stdlib.h>
+#include <string.h>
 #include "file_struct.h"
 
 int changed_flag = UNCHANGED;
@@ -20,7 +21,7 @@ v_line *get_line(v_file_text *file, unsigned int line)
         current_line = current_line->next;
         if (current_line == NULL)
         {
-            return 0;
+            return NULL;
         }
     }
     return current_line;
@@ -45,6 +46,7 @@ int get_total_lines(v_file_text *file)
 
 size_t get_length(v_line *line)
 {
-    return strlen((const char *) line->text);
+    size_t length = strlen(line->text);
+    return length;
 }
 

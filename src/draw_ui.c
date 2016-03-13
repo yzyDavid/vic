@@ -19,14 +19,18 @@ unsigned int cur_column;
 unsigned int cur_top;
 unsigned int cur_left;
 
+char title_bar[CONSOLE_COLUMNS + 1];
+char menu_bar[CONSOLE_COLUMNS + 1];
+char status_bar[CONSOLE_COLUMNS + 1];
+
 int redraw_ui()
 {
-    char title_bar[CONSOLE_COLUMNS + 1] =
-            "vic - ";
-    char menu_bar[CONSOLE_COLUMNS + 1] =
-            "New File[1] Save[2]                                                   -- menu --";
-    char status_bar[CONSOLE_COLUMNS + 1] =
-            "status:                                                                        ";
+    strcpy(title_bar,
+            "vic - ");
+    strcpy(menu_bar,
+            "New File[1] Save[2,s]                                                 -- menu --");
+    strcpy(status_bar,
+            "status:                                                                         ");
 
     gen_status_bar(status_bar);
 
@@ -40,13 +44,13 @@ int redraw_ui()
 
     //Line 1
     printf(L_CYAN);
-    printf("%s",title_bar);
+    printf("%s", title_bar);
     printf(NONE);
     printf("\n");
 
     //Line 2
     printf(L_GREEN);
-    printf("%s",menu_bar);
+    printf("%s", menu_bar);
     printf(NONE);
     printf("\n");
 
@@ -77,7 +81,7 @@ int redraw_ui()
 
     //Line 24
     printf(L_BLUE);
-    printf("%s",status_bar);
+    printf("%s", status_bar);
     printf(NONE);
 
     set_cursor_pos(cur_column, cur_line + 2);
@@ -106,14 +110,18 @@ int gen_status_bar(char *status_bar)
 //return number of units actually rolled.
 int roll_rightward(int repeat)
 {
+    cur_left += repeat;
     return -1;
 }
 
 int roll_downward(int repeat)
 {
+    cur_top -= repeat;
     return -1;
 }
 
+//set cursor position to the assigned pos.
+//relative to the actually console pos.
 int set_cursor_pos(int x, int y)
 {
     printf("\33[%d;%dH", y, x);

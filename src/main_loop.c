@@ -3,11 +3,13 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "main_loop.h"
 #include "file_struct.h"
 #include "draw_ui.h"
 #include "termios_set.h"
+#include "file_sl.h"
 
 static int normal_mode_process(int key_down);
 
@@ -50,6 +52,7 @@ static int normal_mode_process(int key_down)
             if (changed_flag == UNCHANGED)
             {
                 enable_display_back();
+                set_cursor_pos(80, 24);
                 exit(0);
             }
             else
@@ -61,15 +64,19 @@ static int normal_mode_process(int key_down)
             //belows hjkl for cursor moving.
             //aiming to disable moving cursor outside the file part.
         case 'h':
+            cursor_left();
             break;
 
         case 'l':
+            cursor_right();
             break;
 
         case 'j':
+            cursor_down();
             break;
 
         case 'k':
+            cursor_up();
             break;
 
         case 'w':   //word forward.
@@ -87,6 +94,11 @@ static int normal_mode_process(int key_down)
             break;
 
         case 'o':   //open new line.
+            break;
+
+        case '2':
+        case 's':
+            v_save_file(cur_file_name,cur_file);
             break;
 
         default:
@@ -127,11 +139,38 @@ int cursor_left()
         cur_column++;
         return 0;
     }
-    return 1;
+    if (cur_column > 1)
+    {
+        return 1;
+    }
+    else if (cur_left > 1)
+    {
+        cur_column++;
+        roll_rightward(-1);
+        return 1;
+    }
+    return -1;
 }
 
 int cursor_right()
 {
+    assert(cur_column <= 80);
+    ++cur_column;
+    if (!is_position_in_file())
+    {
+        cur_column--;
+        return 0;
+    }
+    if (cur_column >= 80)
+    {
+        --cur_column;
+        roll_rightward(1);
+        return 1;
+    }
+    else
+    {
+        return 1;
+    }
     return -1;
 }
 

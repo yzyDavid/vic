@@ -12,9 +12,9 @@
 int v_load_file(const char *filename, v_file_text *file_struct)
 {
     FILE *fp;
-    int ch;
+    char ch;
     v_line *cur_line;
-    int *cur_char;
+    char *cur_char;
 
     if ((fp = fopen(filename, "r")) == NULL)
     {
@@ -27,7 +27,7 @@ int v_load_file(const char *filename, v_file_text *file_struct)
     cur_char = cur_line->text;
     cur_line->next = NULL;
 
-    while ((ch = fgetc(fp)) != EOF)
+    while ((ch = (char) fgetc(fp)) != EOF)
     {
         if (ch != '\n')
         {
@@ -67,7 +67,7 @@ int v_save_file(const char *filename, v_file_text *file_struct)
     FILE *fp;
 //    int ch;
     v_line *cur_line;
-    int *cur_char;
+    char *cur_char;
 
     if ((fp = fopen(filename, "w")) == NULL)
     {
@@ -78,7 +78,7 @@ int v_save_file(const char *filename, v_file_text *file_struct)
     cur_char = cur_line->text;
     do
     {
-        while (cur_char)
+        while (*cur_char)
         {
             fputc(*cur_char, fp);
             cur_char++;

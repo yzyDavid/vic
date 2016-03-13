@@ -18,7 +18,7 @@ extern int changed_flag;
 extern char cur_file_name[300];
 
 typedef struct v_line_s {
-    int text[LINE_LENGTH];
+    char text[LINE_LENGTH];
     struct v_line_s *next;
 } v_line;
 
