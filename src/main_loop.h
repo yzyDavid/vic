@@ -14,4 +14,9 @@ extern int mode_flag;
 
 int main_loop();
 
+int cursor_left();
+int cursor_right();
+int cursor_up();
+int cursor_down();
+
 #endif //VIC_MAIN_LOOP_H

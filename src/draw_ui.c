@@ -9,10 +9,12 @@
 #include "file_struct.h"
 
 //This globals defines the position of "cursor".
+//relative to the line3-23 (actually contains the file) part.
 unsigned int cur_line;
 unsigned int cur_column;
 
 //This globals defines the position of the screen.
+//relative to the file.
 unsigned int cur_top;
 unsigned int cur_left;
 

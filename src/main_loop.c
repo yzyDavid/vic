@@ -101,3 +101,29 @@ static int insert_mode_process(int key_down)
     }
     return 0;
 }
+
+//functions below is the implements of moving the cursor.
+//only should be called when its under normal or insert mode.
+//return code:
+//0: move failed.
+//1: move success.
+//-1: exceptions.
+int cursor_left()
+{
+    return -1;
+}
+
+int cursor_right()
+{
+    return -1;
+}
+
+int cursor_up()
+{
+    return -1;
+}
+
+int cursor_down()
+{
+    return -1;
+}

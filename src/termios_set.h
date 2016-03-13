@@ -9,6 +9,8 @@
 #ifndef VIC_TERMIOS_SET_H
 #define VIC_TERMIOS_SET_H
 
+#include <stdio.h>
+
 #include "draw_ui.h"
 
 int init_display_back();
