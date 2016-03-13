@@ -8,11 +8,8 @@
 #include "main_loop.h"
 #include "file_struct.h"
 #include "draw_ui.h"
-#include "termios_set.h"
-#include "file_sl.h"
 #include "normal_loop.h"
-
-int insert_mode_process(int key_down);
+#include "insert_loop.h"
 
 int mode_flag = NORMAL_MODE;
 
@@ -42,21 +39,6 @@ int main_loop()
     }
     return 0;
 }
-
-int insert_mode_process(int key_down)
-{
-    switch (key_down)
-    {
-        case '\x1b':  //Esc
-            mode_flag = NORMAL_MODE;
-            break;
-
-        default:
-            break;
-    }
-    return 0;
-}
-
 
 //This function judge if the position of cursor is contained in the file.
 //return code:
