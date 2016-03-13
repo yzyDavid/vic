@@ -6,6 +6,8 @@
 #ifndef VIC_LINES_LIST_H
 #define VIC_LINES_LIST_H
 
+#include <string.h>
+
 #define LINE_LENGTH 300
 
 #define UNCHANGED 0
@@ -29,5 +31,10 @@ extern v_file_text *cur_file;
 v_line *get_line(v_file_text *file, unsigned int line);
 int get_char(v_line *line, unsigned int position);
 int get_total_lines(v_file_text *file);
+
+inline size_t get_length(v_line *line)
+{
+    return strlen((const char *) line->text);
+}
 
 #endif //VIC_LINES_LIST_H

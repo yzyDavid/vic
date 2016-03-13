@@ -89,3 +89,10 @@ int v_save_file(const char *filename, v_file_text *file_struct)
     fclose(fp);
     return 0;
 }
+
+int v_new_file(v_file_text *file_struct)
+{
+    file_struct->head = malloc(sizeof(v_line));
+    file_struct->head->text[0] = 0;
+    return 0;
+}

@@ -9,5 +9,6 @@
 
 int v_load_file(const char *filename, v_file_text*);
 int v_save_file(const char *filename, v_file_text*);
+int v_new_file(v_file_text *file_struct);
 
 #endif //VIC_FILE_SL_H

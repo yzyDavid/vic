@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
         default:
         case 1:
             cur_file_name[0] = 0;
+            v_new_file(cur_file);
             break;
         case 2:
             strcpy(cur_file_name, argv[1]);
