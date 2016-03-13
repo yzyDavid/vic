@@ -13,25 +13,31 @@
 #define UNCHANGED 0
 #define CHANGED 1
 
+#define FILE_LINE_LENGTH 900
+
 extern int changed_flag;
 
-extern char cur_file_name[300];
+extern char cur_file_name[FILE_LINE_LENGTH];
 
-typedef struct v_line_s {
+typedef struct v_line_s
+{
     char text[LINE_LENGTH];
     struct v_line_s *next;
 } v_line;
 
-typedef struct {
+typedef struct
+{
     v_line *head;
 } v_file_text;
 
 extern v_file_text *cur_file;
 
 v_line *get_line(v_file_text *file, unsigned int line);
+
 int get_char(v_line *line, unsigned int position);
+
 unsigned int get_total_lines(v_file_text *file);
 
-size_t get_length(v_line *line);
+unsigned int get_length(v_line *line);
 
 #endif //VIC_LINES_LIST_H

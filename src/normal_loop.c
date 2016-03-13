@@ -55,6 +55,7 @@ int normal_mode_process(int key_down)
             break;
 
         case 'a':   //append.
+            cursor_right();
             mode_flag = INSERT_MODE;
             break;
 

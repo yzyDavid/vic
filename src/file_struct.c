@@ -10,7 +10,7 @@
 int changed_flag = UNCHANGED;
 
 v_file_text *cur_file;
-char cur_file_name[300];
+char cur_file_name[FILE_LINE_LENGTH];
 
 //use this function tp make sure wrong pointer isn't used.
 v_line *get_line(v_file_text *file, unsigned int line)
@@ -44,9 +44,9 @@ unsigned int get_total_lines(v_file_text *file)
     return count;
 }
 
-size_t get_length(v_line *line)
+unsigned int get_length(v_line *line)
 {
     size_t length = strlen(line->text);
-    return length;
+    return (unsigned int) length;
 }
 

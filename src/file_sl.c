@@ -65,7 +65,6 @@ int v_load_file(const char *filename, v_file_text *file_struct)
 int v_save_file(const char *filename, v_file_text *file_struct)
 {
     FILE *fp;
-//    int ch;
     v_line *cur_line;
     char *cur_char;
 
@@ -96,5 +95,21 @@ int v_new_file(v_file_text *file_struct)
 {
     file_struct->head = malloc(sizeof(v_line));
     file_struct->head->text[0] = 0;
+    return 0;
+}
+
+//This function do no safety checks!
+//12340
+int add_char(v_file_text *file_struct, unsigned int line, unsigned int position, char char_to_add)
+{
+    unsigned int length = 0;
+    v_line *this_line = get_line(file_struct, line);
+    length = get_length(this_line);
+//    length = (length == 0) ? 1 : length;
+    for (int i = length; i >= position; i--)
+    {
+        this_line->text[i] = this_line->text[i - 1];
+    }
+    this_line->text[position - 1] = char_to_add;
     return 0;
 }
