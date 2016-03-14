@@ -10,6 +10,9 @@
 
 int insert_mode_process(int key_down)
 {
+    unsigned int length = 0;
+    length = get_length(get_line(cur_file, cur_line + cur_top - 1));
+
     switch (key_down)
     {
         case '\x1b':  //Esc
@@ -39,7 +42,14 @@ int insert_mode_process(int key_down)
             break;
 
         default:
-            add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
+            if(length!=0)
+            {
+                add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
+            }
+            else
+            {
+                add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
+            }
             cursor_right();
             changed_flag = CHANGED;
             break;

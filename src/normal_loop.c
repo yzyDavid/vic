@@ -194,7 +194,7 @@ int cursor_up()
     }
     else if (cur_top > 1)
     {
-        roll_downward(1);
+        roll_downward(-1);
         return 1;
     }
     return -1;
@@ -205,59 +205,83 @@ int cursor_up()
 // cur_left     21
 // cur_column   80
 // length       0
+//
+//another group crash data:
+//cur_left      1
+//cur_column    1
+//length        0
+
+//return code:
+//0: move failed.
+//1: move success.
+//-1: exceptions.
 int cursor_down()
 {
-    unsigned int lines = get_total_lines(cur_file);
-    unsigned int length;
+    unsigned int length = 0;
+    unsigned int lines = 0;
+    unsigned int actual_column = 0;
+
     cur_line++;
+
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-//    length = (length == 0) ? 1 : length;
-    if (!is_position_in_file())
+    lines = get_total_lines(cur_file);
+    actual_column = cur_left + cur_column - 1;
+
+    if (is_position_in_file())
     {
-        //When the cursor is at the end of a line
-        //length == cur_left + cur_column -1
-        //always works.
-        if (lines >= cur_line + cur_top - 1)
+        if (cur_line > SCREEN_LINES)
         {
-            /*
-            if (length > cur_left + SCREEN_COLUMNS)
+            cur_line--;
+            roll_downward(1);
+            return 1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    else    //is_position_in_file = false
+    {
+        if (cur_line + cur_top - 1 <= lines)   //not exceed the lines EOF
+        {
+            if (cur_line > SCREEN_LINES)
+            {
+                cur_line--;
+                roll_downward(1);
+            }
+
+//            assert(length != 0);
+//            assert(actual_column > length);
+            //length = cur_left + cur_column - 1
+
+            // decline if the end of line outside the screen.
+            if (length == 0)
+            {
+                cur_left = 1;
+                cur_column = 1;
+                return 1;
+            }
+            if (cur_left <= length)
+            {
+                cur_column = length - cur_left + 1;
+                cur_column = (cur_column == 0) ? 1 : cur_column;
+                return 1;
+            }
+            else
             {
                 cur_column = SCREEN_COLUMNS;
                 cur_left = length - cur_column + 1;
                 return 1;
             }
-            else
-            {
-                cur_column = length - cur_left + 1;
-                return 1;
-            }
-             */
-            int tmp = 0;
-            tmp = length - cur_left + 1;
-            if (tmp < 1)
-            {
-                cur_left -= 1 - tmp;
-                tmp = 1;
-            }
-            cur_column = (unsigned int) tmp;
-            return 1;
         }
-        else
+        else    //exceed EOF lines
         {
-            --cur_line;
+            cur_line--;
             return 0;
         }
     }
-    else if (cur_line >= SCREEN_LINES)
-    {
-        --cur_line;
-        roll_downward(-1);
-        return 1;
-    }
-    else if (cur_line < SCREEN_LINES)
-    {
-        return 1;
-    }
+
+    assert(-1);
     return -1;
 }
 
@@ -284,3 +308,4 @@ int goto_line_end()
     }
     return 0;
 }
+

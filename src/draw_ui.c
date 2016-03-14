@@ -126,7 +126,7 @@ int roll_rightward(int repeat)
 
 int roll_downward(int repeat)
 {
-    cur_top -= repeat;
+    cur_top += repeat;
     return -1;
 }
 

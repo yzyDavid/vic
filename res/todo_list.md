@@ -7,3 +7,8 @@
 ###still have problem on backspace in insert mode.
 
 ###then finish function designed.
+
+##issues:
+ENTER   O
+insert mode may have problem against length = 0
+crash on cursor down exceeding EOF
