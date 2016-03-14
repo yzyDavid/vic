@@ -63,6 +63,7 @@ int normal_mode_process(int key_down)
             break;
 
         case 'x':   //delete a single char.
+            del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 2);
             break;
 
         case 'o':   //open new line.

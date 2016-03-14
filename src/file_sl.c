@@ -113,3 +113,17 @@ int add_char(v_file_text *file_struct, unsigned int line, unsigned int position,
     this_line->text[position - 1] = char_to_add;
     return 0;
 }
+
+//delete a single char
+//index relative to array index.
+int del_char(v_line *line, unsigned int index)
+{
+    unsigned int length = 0;
+    length = get_length(line);
+    for (int i = index; i < length; i++)
+    {
+        line->text[i] = line->text[i + 1];
+    }
+    return 0;
+}
+
