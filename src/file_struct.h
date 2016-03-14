@@ -43,4 +43,8 @@ unsigned int get_length(v_line *line);
 
 unsigned int judge_word(v_line *line, unsigned int start);
 
+int split_line(v_file_text *file_struct, unsigned int line_to_split);
+
+v_line * create_empty_line();
+
 #endif //VIC_LINES_LIST_H

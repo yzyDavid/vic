@@ -16,7 +16,7 @@ int mode_flag = NORMAL_MODE;
 int main_loop()
 {
     //This function assume the display back is disabled.
-    int key_down;
+    int key_down = 0;
     while ((key_down = getchar()))
     {
         switch (mode_flag)

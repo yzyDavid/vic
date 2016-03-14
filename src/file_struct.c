@@ -84,3 +84,17 @@ unsigned int judge_word(v_line *line, unsigned int start)
     judge_word_success:
     return i - 1;
 }
+
+int split_line(v_file_text *file_struct, unsigned int line_to_split)
+{
+    v_line *this_line = NULL;
+    this_line = get_line(file_struct, line_to_split);
+    return 0;
+}
+
+v_line *create_empty_line()
+{
+    v_line *to_create = NULL;
+    return to_create;
+}
+

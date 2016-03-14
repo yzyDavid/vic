@@ -11,3 +11,6 @@
 ##issues:
 ENTER   O
 insert mode may have problem against length = 0
+
+##minor TODO:
+add arrow key functions.

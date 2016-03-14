@@ -2,6 +2,7 @@
 // Created by yzy on 3/13/16.
 //
 
+#include <stdio.h>
 #include "insert_loop.h"
 #include "main_loop.h"
 #include "file_sl.h"
@@ -13,10 +14,22 @@ int insert_mode_process(int key_down)
     unsigned int length = 0;
     length = get_length(get_line(cur_file, cur_line + cur_top - 1));
 
+    int second_key_down = 0;
+
     switch (key_down)
     {
+        //arrow keys is also start with x1b!
         case '\x1b':  //Esc
-            mode_flag = NORMAL_MODE;
+            second_key_down = getchar();
+            switch (second_key_down)
+            {
+                case 'x1b':
+                    mode_flag = NORMAL_MODE;
+                    break;
+
+                default:
+                    break;
+            }
             break;
 
         case '\x7f':  //backspace
@@ -42,7 +55,7 @@ int insert_mode_process(int key_down)
             break;
 
         default:
-            if(length!=0)
+            if (length != 0)
             {
                 add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
             }
