@@ -16,6 +16,11 @@ int insert_mode_process(int key_down)
             mode_flag = NORMAL_MODE;
             break;
 
+        case '\x7f':  //backspace
+            del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
+            cursor_left();
+            break;
+
         case '\t':
             add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, ' ');
             add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, ' ');

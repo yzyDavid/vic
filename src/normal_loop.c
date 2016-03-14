@@ -50,6 +50,12 @@ int normal_mode_process(int key_down)
         case 'w':   //word forward.
             break;
 
+        case 'b':   //word backward.
+            break;
+
+        case 'e':   //word-end forward.
+            break;
+
         case 'i':   //insert.
             mode_flag = INSERT_MODE;
             break;
@@ -65,6 +71,7 @@ int normal_mode_process(int key_down)
             unsigned int word_len = 0;
             unsigned int start_index = cur_left + cur_column - 2;
             unsigned int end_index = judge_word(this_line, start_index + 1);
+            word_len = end_index - start_index + 1;
             for (int i = 0; i < end_index - start_index + 1; i++)
             {
                 del_char(this_line, cur_left + cur_column - 2);
@@ -83,7 +90,7 @@ int normal_mode_process(int key_down)
             goto_line_end();
             break;
 
-        case '^':   //goto fisrt char of line.
+        case '^':   //goto first char of line.
             break;
 
         case '0':   //goto fixed first column.
