@@ -85,16 +85,62 @@ unsigned int judge_word(v_line *line, unsigned int start)
     return i - 1;
 }
 
-int split_line(v_file_text *file_struct, unsigned int line_to_split)
+int split_line(v_file_text *file_struct, unsigned int line_to_split, unsigned int index_of_start_newline)
 {
     v_line *this_line = NULL;
     this_line = get_line(file_struct, line_to_split);
+    unsigned int length = get_length(this_line);
+    if (length < index_of_start_newline)
+    {
+        return -1;
+    }
+    v_line *new_line = create_empty_line();
+    if (new_line == NULL)
+    {
+        return -1;
+    }
+    strcpy(new_line->text, this_line->text + index_of_start_newline);
+    this_line->text[index_of_start_newline] = 0;
+    v_line *temp = this_line->next;
+    this_line->next = new_line;
+    new_line->next = temp;
     return 0;
 }
 
 v_line *create_empty_line()
 {
     v_line *to_create = NULL;
+    to_create = malloc(sizeof(v_line));
+    to_create->text[0] = 0;
     return to_create;
+}
+
+int insert_empty_line(v_file_text *file_struct, unsigned int line_to_insert_after)
+{
+    v_line *line_before = get_line(file_struct, line_to_insert_after);
+    v_line *temp = line_before->next;
+    v_line *new_line = create_empty_line();
+    if (new_line == NULL)
+    {
+        return -1;
+    }
+    new_line->next = temp;
+    line_before->next = new_line;
+    return 0;
+}
+
+unsigned int count_ltrim_space(v_line *line)
+{
+    unsigned int i = 0;
+    unsigned int length = get_length(line);
+
+    for (; i < length; i++)
+    {
+        if (line->text[i] != ' ')
+        {
+            return i;
+        }
+    }
+    return (unsigned int)-1;
 }
 

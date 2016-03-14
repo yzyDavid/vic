@@ -8,13 +8,13 @@
 
 #include <string.h>
 
-#define LINE_LENGTH 300
+#define LINE_LENGTH (1024*16)
 
 #define UNCHANGED 0
 #define CHANGED 1
 #define UNSAVED 2
 
-#define FILE_LINE_LENGTH 900
+#define FILE_LINE_LENGTH (1024*4)
 
 extern int changed_flag;
 
@@ -26,7 +26,7 @@ typedef struct v_line_s
     struct v_line_s *next;
 } v_line;
 
-typedef struct
+typedef struct v_file_text_s
 {
     v_line *head;
 } v_file_text;
@@ -43,8 +43,12 @@ unsigned int get_length(v_line *line);
 
 unsigned int judge_word(v_line *line, unsigned int start);
 
-int split_line(v_file_text *file_struct, unsigned int line_to_split);
+int split_line(v_file_text *file_struct, unsigned int line_to_split, unsigned int index_of_start_newline);
 
-v_line * create_empty_line();
+v_line *create_empty_line();
+
+int insert_empty_line(v_file_text *file_struct, unsigned int line_to_insert_after);
+
+unsigned int count_ltrim_space(v_line *line);
 
 #endif //VIC_LINES_LIST_H

@@ -130,6 +130,9 @@ int normal_mode_process(int key_down)
             break;
 
         case 'o':   //open new line.
+            insert_empty_line(cur_file, cur_top + cur_line - 1);
+            cursor_down();
+            mode_flag = INSERT_MODE;
             break;
 
         case '$':
