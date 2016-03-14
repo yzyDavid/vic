@@ -14,8 +14,43 @@
 
 int normal_mode_process(int key_down)
 {
+    int second_key_down = 0;
     switch (key_down)
     {
+        case '\x1b':  //Esc
+            second_key_down = getchar();
+            switch (second_key_down)    //double stroke Esc to return to normal mode.
+            {
+                case '\x5b':
+                    second_key_down = getchar();
+                    switch (second_key_down)
+                    {
+                        case '\x41':     //up
+                            cursor_up();
+                            break;
+
+                        case '\x42':     //down
+                            cursor_down();
+                            break;
+
+                        case '\x43':     //right
+                            cursor_right();
+                            break;
+
+                        case '\x44':     //left
+                            cursor_left();
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+            break;
+
         case '!':   //quit directly.
             enable_display_back();
             set_cursor_pos(80, 24);

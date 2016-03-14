@@ -21,10 +21,35 @@ int insert_mode_process(int key_down)
         //arrow keys is also start with x1b!
         case '\x1b':  //Esc
             second_key_down = getchar();
-            switch (second_key_down)
+            switch (second_key_down)    //double stroke Esc to return to normal mode.
             {
-                case 'x1b':
+                case '\x1b':
                     mode_flag = NORMAL_MODE;
+                    break;
+
+                case '\x5b':
+                    second_key_down = getchar();
+                    switch (second_key_down)
+                    {
+                        case '\x41':     //up
+                            cursor_up();
+                            break;
+
+                        case '\x42':     //down
+                            cursor_down();
+                            break;
+
+                        case '\x43':     //right
+                            cursor_right();
+                            break;
+
+                        case '\x44':     //left
+                            cursor_left();
+                            break;
+
+                        default:
+                            break;
+                    }
                     break;
 
                 default:
