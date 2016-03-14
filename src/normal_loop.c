@@ -60,6 +60,16 @@ int normal_mode_process(int key_down)
             break;
 
         case 'd':   //delete a word.
+        {
+            v_line *this_line = get_line(cur_file, cur_top + cur_line - 1);
+            unsigned int word_len = 0;
+            unsigned int start_index = cur_left + cur_column - 2;
+            unsigned int end_index = judge_word(this_line, start_index + 1);
+            for (int i = 0; i < end_index - start_index + 1; i++)
+            {
+                del_char(this_line, cur_left + cur_column - 2);
+            }
+        }
             break;
 
         case 'x':   //delete a single char.

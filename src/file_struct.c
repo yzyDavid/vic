@@ -52,6 +52,7 @@ unsigned int get_length(v_line *line)
 }
 
 //find a whole word
+//start is relative to the actual position (1 is the first index).
 //return the index of end char in the array.
 //return 0 on failed.
 unsigned int judge_word(v_line *line, unsigned int start)

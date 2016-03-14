@@ -13,10 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="024c5e09-80b4-4630-aeb5-32d6edbc9a08" name="Default" comment="k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/yzy.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/yzy.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_sl.c" afterPath="$PROJECT_DIR$/src/file_sl.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_sl.h" afterPath="$PROJECT_DIR$/src/file_sl.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/todo_list.md" afterPath="$PROJECT_DIR$/res/todo_list.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_struct.c" afterPath="$PROJECT_DIR$/src/file_struct.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/normal_loop.c" afterPath="$PROJECT_DIR$/src/normal_loop.c" />
     </list>
     <ignored path="vic.iws" />
@@ -37,11 +35,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="file_sl.c" pinned="false" current-in-tab="true">
+            <file leaf-file-name="file_sl.c" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/file_sl.c">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.7902484">
-                    <caret line="118" column="34" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="120" column="27" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
                     <folding>
                       <element signature="e#36#54#0" expanded="true" />
                     </folding>
@@ -55,6 +53,18 @@
                   <state vertical-scroll-proportion="0.0">
                     <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                     <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="file_struct.c" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/file_struct.c">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.42318308">
+                    <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+                    <folding>
+                      <element signature="e#104#123#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -73,8 +83,8 @@
       <file leaf-file-name="normal_loop.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/normal_loop.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53125">
-              <caret line="65" column="91" selection-start-line="65" selection-start-column="91" selection-end-line="65" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.40625">
+              <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
               <folding>
                 <element signature="e#37#56#0" expanded="true" />
               </folding>
@@ -89,6 +99,19 @@
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo_list.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/todo_list.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0357144">
+              <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -112,18 +135,6 @@
               <caret line="107" column="24" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
               <folding>
                 <element signature="e#37#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="file_struct.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/file_struct.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-              <folding>
-                <element signature="e#104#123#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/lines_list.h" />
         <option value="$PROJECT_DIR$/src/test/testmain.c" />
         <option value="$PROJECT_DIR$/colc_this.sh" />
-        <option value="$PROJECT_DIR$/res/todo_list.md" />
         <option value="$PROJECT_DIR$/src/main.h" />
         <option value="$PROJECT_DIR$/src/main.c" />
         <option value="$PROJECT_DIR$/src/termios_set.h" />
@@ -206,11 +216,12 @@
         <option value="$PROJECT_DIR$/src/file_struct.h" />
         <option value="$PROJECT_DIR$/src/highlight.h" />
         <option value="$PROJECT_DIR$/src/highlight.c" />
-        <option value="$PROJECT_DIR$/src/file_struct.c" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/src/file_sl.c" />
-        <option value="$PROJECT_DIR$/src/normal_loop.c" />
         <option value="$PROJECT_DIR$/src/file_sl.h" />
+        <option value="$PROJECT_DIR$/res/todo_list.md" />
+        <option value="$PROJECT_DIR$/src/file_struct.c" />
+        <option value="$PROJECT_DIR$/src/normal_loop.c" />
       </list>
     </option>
   </component>
@@ -694,16 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/todo_list.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0357144">
-          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -868,12 +869,12 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_struct.c">
+    <entry file="file://$PROJECT_DIR$/src/file_sl.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          <caret line="120" column="27" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
           <folding>
-            <element signature="e#104#123#0" expanded="true" />
+            <element signature="e#36#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -886,20 +887,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_sl.c">
+    <entry file="file://$PROJECT_DIR$/res/todo_list.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7902484">
-          <caret line="118" column="34" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
+        <state vertical-scroll-proportion="-2.0357144">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_struct.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42318308">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
           <folding>
-            <element signature="e#36#54#0" expanded="true" />
+            <element signature="e#104#123#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_loop.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53125">
-          <caret line="65" column="91" selection-start-line="65" selection-start-column="91" selection-end-line="65" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.40625">
+          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
           <folding>
             <element signature="e#37#56#0" expanded="true" />
           </folding>
