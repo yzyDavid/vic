@@ -105,6 +105,7 @@ int normal_mode_process(int key_down)
         case '2':
         case 's':
             v_save_file(cur_file_name, cur_file);
+            changed_flag = UNCHANGED;
             break;
 
         default:

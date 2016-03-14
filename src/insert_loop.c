@@ -19,6 +19,7 @@ int insert_mode_process(int key_down)
         case '\x7f':  //backspace
             del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
             cursor_left();
+            changed_flag = CHANGED;
             break;
 
         case '\t':
@@ -30,11 +31,17 @@ int insert_mode_process(int key_down)
             cursor_right();
             cursor_right();
             cursor_right();
+            changed_flag = CHANGED;
+            break;
+
+        case '\n':  //Enter: not tested.
+            changed_flag = CHANGED;
             break;
 
         default:
             add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
             cursor_right();
+            changed_flag = CHANGED;
             break;
     }
     return 0;
