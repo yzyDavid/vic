@@ -184,7 +184,7 @@ int cursor_up()
     {
         cur_line--;
         length = (int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-        length = (length == 0) ? 1 : length;
+//        length = (length == 0) ? 1 : length;
         if (length < cur_column)
         {
             cur_column = length;
@@ -210,7 +210,7 @@ int cursor_down()
     unsigned int length;
     cur_line++;
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-    length = (length == 0) ? 1 : length;
+//    length = (length == 0) ? 1 : length;
     if (!is_position_in_file())
     {
         //When the cursor is at the end of a line
@@ -265,7 +265,7 @@ int goto_line_end()
     unsigned int actual_column = 0;
     unsigned int length = 0;
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-    length = (length == 0) ? 1 : length;
+//    length = (length == 0) ? 1 : length;
     actual_column = cur_left + cur_column - 1;
     if (length > actual_column)
     {

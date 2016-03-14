@@ -99,6 +99,7 @@ int v_new_file(v_file_text *file_struct)
 }
 
 //This function do no safety checks!
+//position start from 1.
 //12340
 int add_char(v_file_text *file_struct, unsigned int line, unsigned int position, char char_to_add)
 {

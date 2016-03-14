@@ -41,6 +41,7 @@ int main_loop()
 }
 
 //This function judge if the position of cursor is contained in the file.
+//***!!! position available: including one pos at each end of line  !!!***
 //return code:
 //1 for True
 //0 for False
@@ -55,7 +56,7 @@ int is_position_in_file()
     {
         return 0;
     }
-    if (cur_file_column > get_length(get_line(cur_file, cur_file_line)))
+    if (cur_file_column > 1 + get_length(get_line(cur_file, cur_file_line)))
     {
         return 0;
     }
