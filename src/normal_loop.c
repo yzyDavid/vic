@@ -16,8 +16,14 @@ int normal_mode_process(int key_down)
 {
     switch (key_down)
     {
+        case '!':   //quit directly.
+            enable_display_back();
+            set_cursor_pos(80, 24);
+            exit(0);
+            break;
+
         case 'q':   //quit, is saved should be checked.
-            if (changed_flag == UNCHANGED)
+            if (changed_flag == UNCHANGED || changed_flag == UNSAVED)
             {
                 enable_display_back();
                 set_cursor_pos(80, 24);
@@ -25,7 +31,7 @@ int normal_mode_process(int key_down)
             }
             else
             {
-
+                changed_flag = UNSAVED;
             }
             break;
 
@@ -76,11 +82,16 @@ int normal_mode_process(int key_down)
             {
                 del_char(this_line, cur_left + cur_column - 2);
             }
+            if (word_len != 0)
+            {
+                changed_flag = CHANGED;
+            }
         }
             break;
 
         case 'x':   //delete a single char.
             del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 2);
+            changed_flag = CHANGED;
             break;
 
         case 'o':   //open new line.
@@ -94,6 +105,7 @@ int normal_mode_process(int key_down)
             break;
 
         case '0':   //goto fixed first column.
+            goto_line_start();
             break;
 
         case ':':   //bottom line command mode.
@@ -154,14 +166,14 @@ int cursor_left()
 
 int cursor_right()
 {
-    assert(cur_column <= 80);
+    assert(cur_column <= SCREEN_COLUMNS);
     ++cur_column;
     if (!is_position_in_file())
     {
         cur_column--;
         return 0;
     }
-    else if (cur_column >= 80)
+    else if (cur_column >= SCREEN_COLUMNS)
     {
         --cur_column;
         roll_rightward(1);
@@ -189,6 +201,7 @@ int cursor_up()
         if (length < cur_column)
         {
             cur_column = length;
+            cur_column = (cur_column == 0) ? 1 : cur_column;
         }
         return 1;
     }
@@ -221,10 +234,16 @@ int cursor_down()
     unsigned int lines = 0;
     unsigned int actual_column = 0;
 
+    lines = get_total_lines(cur_file);
     cur_line++;
 
+    if (cur_top + cur_line - 1 > lines)
+    {
+        cur_line--;
+        return 0;
+    }
+
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-    lines = get_total_lines(cur_file);
     actual_column = cur_left + cur_column - 1;
 
     if (is_position_in_file())
@@ -306,6 +325,18 @@ int goto_line_end()
             cursor_left();
         }
     }
+    return 0;
+}
+
+int goto_line_start()
+{
+    unsigned int actual_column = 0;
+    actual_column = cur_left + cur_column - 1;
+    for (int i = 0; i < actual_column - 1; i++)
+    {
+        cursor_left();
+    }
+
     return 0;
 }
 

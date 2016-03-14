@@ -12,6 +12,7 @@
 
 #define UNCHANGED 0
 #define CHANGED 1
+#define UNSAVED 2
 
 #define FILE_LINE_LENGTH 900
 

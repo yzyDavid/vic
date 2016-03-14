@@ -11,4 +11,3 @@
 ##issues:
 ENTER   O
 insert mode may have problem against length = 0
-crash on cursor down exceeding EOF

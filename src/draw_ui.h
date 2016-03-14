@@ -57,6 +57,7 @@ extern char status_bar[CONSOLE_COLUMNS + 1];
 
 #define NORMAL "NORMAL"
 #define INSERT "INSERT"
+#define SAVE_WARN "!SAVE!"
 
 int gen_status_bar(char *status_bar);
 

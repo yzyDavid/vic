@@ -47,6 +47,10 @@ unsigned int get_total_lines(v_file_text *file)
 
 unsigned int get_length(v_line *line)
 {
+    if (line == NULL)
+    {
+        return 0;
+    }
     size_t length = strlen(line->text);
     return (unsigned int) length;
 }

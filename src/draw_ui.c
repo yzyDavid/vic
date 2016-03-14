@@ -98,6 +98,12 @@ int gen_status_bar(char *status_bar)
     a_line = cur_top + cur_line - 1;
     a_column = cur_left + cur_column - 1;
 
+    if (changed_flag == UNSAVED)
+    {
+        sprintf(status_bar, status_bar_template, a_line, a_column, SAVE_WARN);
+        return 0;
+    }
+
     switch (mode_flag)
     {
         case NORMAL_MODE:

@@ -13,5 +13,6 @@ int cursor_up();
 int cursor_down();
 
 int goto_line_end();
+int goto_line_start();
 
 #endif //VIC_NORMAL_LOOP_H
