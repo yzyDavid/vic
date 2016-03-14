@@ -43,3 +43,6 @@ char *cplusplus_highlight_list[] = {
         "constexpr","decltype","noexcept","nullptr",
         "static_assert","thread_local"
 };
+
+char word_char_list[]="qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM";
+

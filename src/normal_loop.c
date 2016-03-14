@@ -59,7 +59,10 @@ int normal_mode_process(int key_down)
             mode_flag = INSERT_MODE;
             break;
 
-        case 'd':   //delete.
+        case 'd':   //delete a word.
+            break;
+
+        case 'x':   //delete a single char.
             break;
 
         case 'o':   //open new line.
@@ -67,6 +70,18 @@ int normal_mode_process(int key_down)
 
         case '$':
             goto_line_end();
+            break;
+
+        case '^':   //goto fisrt char of line.
+            break;
+
+        case '0':   //goto fixed first column.
+            break;
+
+        case ':':   //bottom line command mode.
+            break;
+
+        case '/':    //bottom line and search.
             break;
 
         case '2':

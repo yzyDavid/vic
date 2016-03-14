@@ -55,6 +55,9 @@ extern char status_bar[CONSOLE_COLUMNS + 1];
 #define SCREEN_LINES 21
 #define SCREEN_COLUMNS 80
 
+#define NORMAL "NORMAL"
+#define INSERT "INSERT"
+
 int gen_status_bar(char *status_bar);
 
 int roll_rightward(int repeat);

@@ -22,15 +22,16 @@ unsigned int cur_left;
 char title_bar[CONSOLE_COLUMNS + 1];
 char menu_bar[CONSOLE_COLUMNS + 1];
 char status_bar[CONSOLE_COLUMNS + 1];
+char status_bar_template[CONSOLE_COLUMNS + 1];
 
 int redraw_ui()
 {
     strcpy(title_bar,
-            "vic - ");
+           "vic - ");
     strcpy(menu_bar,
-            "New File[1] Save[2,s]                                                 -- menu --");
-    strcpy(status_bar,
-            "status:                                                                         ");
+           "New File[1] Save[2,s]                                                 -- menu --");
+    strcpy(status_bar_template,
+           "status: Line: %4u Column: %3u                         -- %s --             ");
 
     gen_status_bar(status_bar);
 
@@ -91,12 +92,21 @@ int redraw_ui()
 
 int gen_status_bar(char *status_bar)
 {
+    unsigned int a_line = 0;
+    unsigned int a_column = 0;
+
+    a_line = cur_top + cur_line - 1;
+    a_column = cur_left + cur_column - 1;
+
     switch (mode_flag)
     {
         case NORMAL_MODE:
+            //This usage is dangerous!!
+            sprintf(status_bar, status_bar_template, a_line, a_column, NORMAL);
             break;
 
         case INSERT_MODE:
+            sprintf(status_bar, status_bar_template, a_line, a_column, INSERT);
             break;
 
         default:

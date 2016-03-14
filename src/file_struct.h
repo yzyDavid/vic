@@ -40,4 +40,6 @@ unsigned int get_total_lines(v_file_text *file);
 
 unsigned int get_length(v_line *line);
 
+unsigned int judge_word(v_line *line, unsigned int start);
+
 #endif //VIC_LINES_LIST_H

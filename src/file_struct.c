@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "file_struct.h"
+#include "highlight.h"
 
 int changed_flag = UNCHANGED;
 
@@ -50,3 +51,31 @@ unsigned int get_length(v_line *line)
     return (unsigned int) length;
 }
 
+//find a whole word
+//return the index of end char in the array.
+//return 0 on failed.
+unsigned int judge_word(v_line *line, unsigned int start)
+{
+    unsigned int length = get_length(line);
+    unsigned int i;
+    char *j = NULL;
+    int flag = 0;
+    for (i = start; i < length; i++)
+    {
+        flag = 0;
+        for (j = word_char_list; *j != 0; j++)
+        {
+            if (*j == line->text[i])
+            {
+                flag = 1;
+            }
+        }
+        if (flag == 0)
+        {
+            goto judge_word_success;
+        }
+    }
+    return 0;
+    judge_word_success:
+    return i - 1;
+}
