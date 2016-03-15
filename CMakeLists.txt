@@ -12,6 +12,6 @@ set(SOURCE_FILES src/main.c
         src/draw_ui.c
         src/draw_ui.h
         src/file_sl.c
-        src/file_sl.h src/termios_set.c src/termios_set.h src/main_loop.c src/main_loop.h src/main.h src/normal_loop.c src/normal_loop.h src/insert_loop.c src/insert_loop.h src/highlight.c src/highlight.h)
+        src/file_sl.h src/termios_set.c src/termios_set.h src/main_loop.c src/main_loop.h src/main.h src/normal_loop.c src/normal_loop.h src/insert_loop.c src/insert_loop.h src/highlight.c src/highlight.h src/log_module.c src/log_module.h)
 add_executable(vic_test ${SOURCE_FILES_TEST})
 add_executable(vic ${SOURCE_FILES})

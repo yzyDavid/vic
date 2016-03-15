@@ -7,6 +7,7 @@
 #include <string.h>
 #include "file_struct.h"
 #include "highlight.h"
+#include "log_module.h"
 
 int changed_flag = UNCHANGED;
 
@@ -15,6 +16,7 @@ char cur_file_name[FILE_LINE_LENGTH];
 int cur_file_type = PLAIN_TEXT;
 
 //use this function tp make sure wrong pointer isn't used.
+//line is start from 1
 v_line *get_line(v_file_text *file, unsigned int line)
 {
     v_line *current_line = file->head;
@@ -148,8 +150,6 @@ unsigned int count_ltrim_space(v_line *line)
 int parse_highlighting(v_file_text *file_struct)
 {
     int type_current = COMMON_TEXT;
-    int in_string = 0;
-    int in_comment = 0;
     int i, j, k;
     int lines = get_total_lines(cur_file);
     char **highlight_list;
@@ -180,7 +180,12 @@ int parse_highlighting(v_file_text *file_struct)
             }
             line_processing->info[j] = COMMON_TEXT;
             int end = judge_word(line_processing, (unsigned int) (j + 1));
-            strncpy(word_temp, line_processing->text + j, (size_t) (end - j + 1));
+            if (end != 0)
+            {
+                memset(word_temp, 0, sizeof(word_temp));
+                strncpy(word_temp, line_processing->text + j, (size_t) (end - j + 1));
+                print_log(word_temp);
+            }
             for (k = 0; *(highlight_list[k]) != 0; k++)
             {
                 if ((strcmp(highlight_list[k], word_temp) == 0))

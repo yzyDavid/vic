@@ -11,9 +11,11 @@
 #include "file_struct.h"
 #include "file_sl.h"
 #include "main.h"
+#include "log_module.h"
 
 int main(int argc, char *argv[])
 {
+    init_log();
     cur_file = malloc(sizeof(v_file_text));
     switch (argc)
     {
@@ -30,6 +32,7 @@ int main(int argc, char *argv[])
 
     init_global();
 
+    parse_highlighting(cur_file);
     redraw_ui();
     init_display_back();
     disable_display_back();
