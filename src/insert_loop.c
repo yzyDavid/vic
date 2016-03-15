@@ -14,6 +14,11 @@ int insert_mode_process(int key_down)
     unsigned int length = 0;
     length = get_length(get_line(cur_file, cur_line + cur_top - 1));
 
+    unsigned int actual_column = 0;
+    unsigned int actual_line = 0;
+    actual_column = cur_column + cur_left - 1;
+    actual_line = cur_line + cur_top - 1;
+
     int second_key_down = 0;
 
     switch (key_down)
@@ -58,9 +63,16 @@ int insert_mode_process(int key_down)
             break;
 
         case '\x7f':  //backspace
-            del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
-            cursor_left();
-            changed_flag = CHANGED;
+            if(actual_column!=1)
+            {
+                del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
+                cursor_left();
+                changed_flag = CHANGED;
+            }
+            else
+            {
+
+            }
             break;
 
         case '\t':

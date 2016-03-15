@@ -6,6 +6,7 @@
 #define VIC_LOG_MODULE_H
 
 #define VIC_LOG_ON
+#undef VIC_LOG_ON
 
 #ifdef VIC_LOG_ON
 #define print_log(content) __vic_log_output(content)

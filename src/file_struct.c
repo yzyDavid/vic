@@ -149,7 +149,6 @@ unsigned int count_ltrim_space(v_line *line)
 
 int parse_highlighting(v_file_text *file_struct)
 {
-    int type_current = COMMON_TEXT;
     int i, j, k;
     int lines = get_total_lines(cur_file);
     char **highlight_list;
