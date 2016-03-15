@@ -35,6 +35,7 @@ int main_loop()
             default:
                 break;
         }
+        parse_highlighting(cur_file);
         redraw_ui();
     }
     return 0;

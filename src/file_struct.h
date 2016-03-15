@@ -10,19 +10,34 @@
 
 #define LINE_LENGTH (1024*16)
 
+#define FILE_LINE_LENGTH (1024*4)
+
+//save status macro
 #define UNCHANGED 0
 #define CHANGED 1
 #define UNSAVED 2
 
-#define FILE_LINE_LENGTH (1024*4)
+//highlighting info constants
+#define COMMON_TEXT 0
+#define KEYWORD 1
+#define STRING 2
+#define COMMENT 3
+
+//file type constants
+#define PLAIN_TEXT 0
+#define C_SOURCE 1
+#define CPLUSPLUS_SOURCE 2
 
 extern int changed_flag;
 
 extern char cur_file_name[FILE_LINE_LENGTH];
 
+extern int cur_file_type;
+
 typedef struct v_line_s
 {
     char text[LINE_LENGTH];
+    char info[LINE_LENGTH];
     struct v_line_s *next;
 } v_line;
 
@@ -51,4 +66,9 @@ int insert_empty_line(v_file_text *file_struct, unsigned int line_to_insert_afte
 
 unsigned int count_ltrim_space(v_line *line);
 
+int is_word_start(char *place);
+
+int parse_highlighting(v_file_text *file_struct);
+
 #endif //VIC_LINES_LIST_H
+

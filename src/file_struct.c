@@ -12,6 +12,7 @@ int changed_flag = UNCHANGED;
 
 v_file_text *cur_file;
 char cur_file_name[FILE_LINE_LENGTH];
+int cur_file_type = PLAIN_TEXT;
 
 //use this function tp make sure wrong pointer isn't used.
 v_line *get_line(v_file_text *file, unsigned int line)
@@ -141,6 +142,111 @@ unsigned int count_ltrim_space(v_line *line)
             return i;
         }
     }
-    return (unsigned int)-1;
+    return (unsigned int) -1;
 }
 
+int parse_highlighting(v_file_text *file_struct)
+{
+    int type_current = COMMON_TEXT;
+    int in_string = 0;
+    int in_comment = 0;
+    int i, j, k;
+    int lines = get_total_lines(cur_file);
+    char **highlight_list;
+    char word_temp[FILE_LINE_LENGTH];
+    switch (cur_file_type)
+    {
+        case C_SOURCE:
+            highlight_list = c_highlight_list;
+            break;
+
+        case CPLUSPLUS_SOURCE:
+            highlight_list = cplusplus_highlight_list;
+            break;
+
+        default:
+//            return -1;
+            highlight_list = c_highlight_list;
+    }
+    for (i = 0; i < lines; i++)
+    {
+        v_line *line_processing = get_line(file_struct, (unsigned int) (i + 1));
+        int length = get_length(line_processing);
+        for (j = 0; j < length; j++)
+        {
+            if (j != 0 && !is_word_start(line_processing->text + j))
+            {
+                continue;
+            }
+            line_processing->info[j] = COMMON_TEXT;
+            int end = judge_word(line_processing, (unsigned int) (j + 1));
+            strncpy(word_temp, line_processing->text + j, (size_t) (end - j + 1));
+            for (k = 0; *(highlight_list[k]) != 0; k++)
+            {
+                if ((strcmp(highlight_list[k], word_temp) == 0))
+                {
+                    for (int t = j; t <= end; t++)
+                    {
+                        line_processing->info[t] = KEYWORD;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+int determine_file_type(char *file_name)
+{
+    unsigned length = (unsigned int) strlen(file_name);
+    if (strcmp(file_name + length - 2, ".c") == 0)
+    {
+        cur_file_type = C_SOURCE;
+        return 0;
+    }
+    if (strcmp(file_name + length - 2, ".C") == 0)
+    {
+        cur_file_type = C_SOURCE;
+        return 0;
+    }
+    if (strcmp(file_name + length - 4, ".cpp") == 0)
+    {
+        cur_file_type = CPLUSPLUS_SOURCE;
+        return 0;
+    }
+    if (strcmp(file_name + length - 3, ".cc") == 0)
+    {
+        cur_file_type = CPLUSPLUS_SOURCE;
+        return 0;
+    }
+    if (strcmp(file_name + length - 4, ".cxx") == 0)
+    {
+        cur_file_type = CPLUSPLUS_SOURCE;
+        return 0;
+    }
+    if (strcmp(file_name + length - 4, ".CPP") == 0)
+    {
+        cur_file_type = CPLUSPLUS_SOURCE;
+        return 0;
+    }
+
+    return 0;
+}
+
+//caution!! this function check place before the pointer place!!
+int is_word_start(char *place)
+{
+    if (*(place - 1) != ' ')
+    {
+        return 0;
+    }
+    for (char *i = word_char_list; *i != 0; i++)
+    {
+        if (*place == *i)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}

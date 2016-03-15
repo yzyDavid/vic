@@ -17,7 +17,9 @@ char *c_highlight_list[] = {
         "_Bool", "_Complex", "_Imaginary", "inline", "restrict",
 
         "_Alignas", "_Alignof", "_Atomic", "_Generic",
-        "_Noreturn", "_Static_assert", "_Thread_local"
+        "_Noreturn", "_Static_assert", "_Thread_local",
+
+        ""
 };
 
 char *cplusplus_highlight_list[] = {
@@ -41,7 +43,9 @@ char *cplusplus_highlight_list[] = {
 
         "alignas","alignof","char16_t","char32_t",
         "constexpr","decltype","noexcept","nullptr",
-        "static_assert","thread_local"
+        "static_assert","thread_local",
+
+        ""
 };
 
 char word_char_list[]="qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM";

@@ -73,7 +73,15 @@ int redraw_ui()
                 }
                 else
                 {
+                    if(current_line->info[cur_left+j-1]==KEYWORD)
+                    {
+                        printf(YELLOW);
+                    }
                     printf("%c", current_line->text[cur_left + j - 1]);
+                    if(current_line->info[cur_left+j-1]==KEYWORD)
+                    {
+                        printf(NONE);
+                    }
                 }
             }
         }

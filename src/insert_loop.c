@@ -75,22 +75,19 @@ int insert_mode_process(int key_down)
             changed_flag = CHANGED;
             break;
 
-        case '\n':  //Enter: not tested.
+        case '\n':  //Enter:
+            split_line(cur_file, cur_top + cur_line - 1, cur_left + cur_column - 2);
+            cursor_down();
+            goto_line_start();
             changed_flag = CHANGED;
             break;
 
         default:
-            if (length != 0)
-            {
-                add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
-            }
-            else
-            {
-                add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
-            }
+            add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
             cursor_right();
             changed_flag = CHANGED;
             break;
     }
     return 0;
 }
+
