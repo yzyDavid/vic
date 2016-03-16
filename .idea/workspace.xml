@@ -13,16 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="024c5e09-80b4-4630-aeb5-32d6edbc9a08" name="Default" comment="k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vic.iml" afterPath="$PROJECT_DIR$/.idea/vic.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/draw_ui.c" afterPath="$PROJECT_DIR$/src/draw_ui.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/draw_ui.h" afterPath="$PROJECT_DIR$/src/draw_ui.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file_struct.c" afterPath="$PROJECT_DIR$/src/file_struct.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/highlight.c" afterPath="$PROJECT_DIR$/src/highlight.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/insert_loop.c" afterPath="$PROJECT_DIR$/src/insert_loop.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/normal_loop.h" afterPath="$PROJECT_DIR$/src/normal_loop.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/termios_set.h" afterPath="$PROJECT_DIR$/src/termios_set.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/printf_color.c" afterPath="$PROJECT_DIR$/src/test/printf_color.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo_list.md" afterPath="$PROJECT_DIR$/todo_list.md" />
     </list>
     <ignored path="vic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,6 +42,29 @@
               <folding>
                 <element signature="e#104#123#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file_sl.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/file_sl.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo_list.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo_list.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.62069">
+              <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/file_struct.h" />
         <option value="$PROJECT_DIR$/src/log_module.h" />
         <option value="$PROJECT_DIR$/src/file_struct.c" />
+        <option value="$PROJECT_DIR$/todo_list.md" />
       </list>
     </option>
   </component>
@@ -337,13 +352,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/log_module.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/draw_ui.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -635,13 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_sl.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/draw_ui.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -715,6 +716,25 @@
           <folding>
             <element signature="e#84#103#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_sl.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo_list.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.62069">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
