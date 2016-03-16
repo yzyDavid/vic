@@ -1,8 +1,9 @@
 //
 // Created by yzy on 3/12/16.
 //
+#include "main.h"
 
-#ifdef __linux
+#ifdef __VIC_POSIX
 #include <termios.h>
 #endif
 #include <stdio.h>
@@ -10,14 +11,14 @@
 #include "termios_set.h"
 #include "draw_ui.h"
 
-#ifdef __linux
+#ifdef __VIC_POSIX
 static struct termios disabled;
 static struct termios enabled;
 #endif
 
 int init_display_back()
 {
-#ifdef __linux
+#ifdef __VIC_POSIX
     tcgetattr(0, &enabled);
     disabled = enabled;
     disabled.c_lflag &= ~ICANON;
@@ -30,7 +31,7 @@ int init_display_back()
 
 int disable_display_back()
 {
-#ifdef __linux
+#ifdef __VIC_POSIX
     tcsetattr(0, TCSANOW, &disabled);
 #endif
     return 0;
@@ -38,7 +39,7 @@ int disable_display_back()
 
 int enable_display_back()
 {
-#ifdef __linux
+#ifdef __VIC_POSIX
     tcsetattr(0, TCSANOW, &enabled);
     printf(NONE);
 #endif
@@ -47,7 +48,7 @@ int enable_display_back()
 
 int hide_cursor()
 {
-#ifdef __linux
+#ifdef __VIC_POSIX
     printf(HIDE_CURSOR);
 #endif
     return 0;
@@ -55,7 +56,7 @@ int hide_cursor()
 
 int show_cursor()
 {
-#ifdef __linux
+#ifdef __VIC_POSIX
     printf(SHOW_CURSOR);
 #endif
     return 0;

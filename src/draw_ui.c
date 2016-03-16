@@ -19,12 +19,15 @@ unsigned int cur_column;
 unsigned int cur_top;
 unsigned int cur_left;
 
+unsigned int console_lines = CONSOLE_LINES;
+unsigned int console_columns = CONSOLE_COLUMNS;
+
 char title_bar[CONSOLE_COLUMNS + 1];
 char menu_bar[CONSOLE_COLUMNS + 1];
 char status_bar[CONSOLE_COLUMNS + 1];
 char status_bar_template[CONSOLE_COLUMNS + 1];
 
-int redraw_ui()
+int __redraw_ui_posix()
 {
     strcpy(title_bar,
            "vic - ");

@@ -10,6 +10,9 @@
 #ifndef VIC_DRAW_UI_H
 #define VIC_DRAW_UI_H
 
+#include "main.h"
+
+//constants below are default lines or columns of the console.
 #define CONSOLE_LINES 24
 #define CONSOLE_COLUMNS 80
 
@@ -46,7 +49,11 @@
 #define HIDE_CURSOR     "\e[?25l"
 #define SHOW_CURSOR     "\e[?25h"
 
-int redraw_ui();
+#ifdef __VIC_POSIX
+#define redraw_ui __redraw_ui_posix
+#endif
+
+int __redraw_ui_posix();
 
 extern char title_bar[CONSOLE_COLUMNS + 1];
 extern char menu_bar[CONSOLE_COLUMNS + 1];
