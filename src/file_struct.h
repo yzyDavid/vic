@@ -72,5 +72,9 @@ int parse_highlighting(v_file_text *file_struct);
 
 int determine_file_type(char *file_name);
 
+int delete_line(v_file_text *file_struct, unsigned int line_to_delete);
+
+int connect_line(v_file_text *file_struct, unsigned int line_to_fold);
+
 #endif //VIC_LINES_LIST_H
 

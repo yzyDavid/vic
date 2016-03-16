@@ -132,6 +132,16 @@ int insert_empty_line(v_file_text *file_struct, unsigned int line_to_insert_afte
     return 0;
 }
 
+int delete_line(v_file_text *file_struct, unsigned int line_to_delete)
+{
+    return 0;
+}
+
+int connect_line(v_file_text *file_struct, unsigned int line_to_fold)
+{
+    return 0;
+}
+
 unsigned int count_ltrim_space(v_line *line)
 {
     unsigned int i = 0;
