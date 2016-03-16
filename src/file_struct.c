@@ -80,12 +80,10 @@ unsigned int judge_word(v_line *line, unsigned int start)
         }
         if (flag == 0)
         {
-            goto judge_word_success;
+            return i - 1;
         }
     }
     return 0;
-    judge_word_success:
-    return i - 1;
 }
 
 int split_line(v_file_text *file_struct, unsigned int line_to_split, unsigned int index_of_start_newline)
@@ -134,11 +132,37 @@ int insert_empty_line(v_file_text *file_struct, unsigned int line_to_insert_afte
 
 int delete_line(v_file_text *file_struct, unsigned int line_to_delete)
 {
+    if (line_to_delete == 0)
+    {
+        return -1;
+    }
+    unsigned int lines = get_total_lines(file_struct);
+    if (lines < line_to_delete)
+    {
+        return -1;
+    }
+    v_line *line_pre = get_line(file_struct, line_to_delete - 1);
+    v_line *tmp = line_pre->next->next;
+    free(line_pre->next);
+    line_pre->next = tmp;
     return 0;
 }
 
 int connect_line(v_file_text *file_struct, unsigned int line_to_fold)
 {
+    if (line_to_fold == 0)
+    {
+        return -1;
+    }
+    unsigned int lines = get_total_lines(file_struct);
+    if (lines < line_to_fold)
+    {
+        return -1;
+    }
+    v_line *line_pre = get_line(file_struct, line_to_fold - 1);
+    v_line *line_cur = get_line(file_struct, line_to_fold);
+    unsigned int length_pre = get_length(line_pre);
+    unsigned int length_cur = get_length(line_cur);
     return 0;
 }
 

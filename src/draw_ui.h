@@ -62,6 +62,7 @@ extern char status_bar[CONSOLE_COLUMNS + 1];
 int gen_status_bar(char *status_bar);
 
 int roll_rightward(int repeat);
+
 int roll_downward(int repeat);
 
 int set_cursor_pos(int x, int y);

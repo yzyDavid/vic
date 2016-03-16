@@ -14,10 +14,13 @@
 #include "draw_ui.h"
 
 int init_display_back();
+
 int disable_display_back();
+
 int enable_display_back();
 
 int hide_cursor();
+
 int show_cursor();
 
 #endif //VIC_TERMIOS_SET_H

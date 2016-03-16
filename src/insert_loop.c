@@ -63,7 +63,7 @@ int insert_mode_process(int key_down)
             break;
 
         case '\x7f':  //backspace
-            if(actual_column!=1)
+            if (actual_column != 1)
             {
                 del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
                 cursor_left();
