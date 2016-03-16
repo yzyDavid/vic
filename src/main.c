@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
             v_load_file(cur_file_name, cur_file);
             break;
     }
-
+    determine_file_type(cur_file_name);
     init_global();
 
     parse_highlighting(cur_file);

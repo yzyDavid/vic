@@ -164,8 +164,8 @@ int parse_highlighting(v_file_text *file_struct)
             break;
 
         default:
-//            return -1;
-            highlight_list = c_highlight_list;
+            return -1;
+//            highlight_list = c_highlight_list;
     }
     for (i = 0; i < lines; i++)
     {
@@ -204,32 +204,32 @@ int parse_highlighting(v_file_text *file_struct)
 int determine_file_type(char *file_name)
 {
     unsigned length = (unsigned int) strlen(file_name);
-    if (strcmp(file_name + length - 2, ".c") == 0)
+    if (length > 2 && strcmp(file_name + length - 2, ".c") == 0)
     {
         cur_file_type = C_SOURCE;
         return 0;
     }
-    if (strcmp(file_name + length - 2, ".C") == 0)
+    if (length > 2 && strcmp(file_name + length - 2, ".C") == 0)
     {
         cur_file_type = C_SOURCE;
         return 0;
     }
-    if (strcmp(file_name + length - 4, ".cpp") == 0)
+    if (length > 4 && strcmp(file_name + length - 4, ".cpp") == 0)
     {
         cur_file_type = CPLUSPLUS_SOURCE;
         return 0;
     }
-    if (strcmp(file_name + length - 3, ".cc") == 0)
+    if (length > 3 && strcmp(file_name + length - 3, ".cc") == 0)
     {
         cur_file_type = CPLUSPLUS_SOURCE;
         return 0;
     }
-    if (strcmp(file_name + length - 4, ".cxx") == 0)
+    if (length > 4 && strcmp(file_name + length - 4, ".cxx") == 0)
     {
         cur_file_type = CPLUSPLUS_SOURCE;
         return 0;
     }
-    if (strcmp(file_name + length - 4, ".CPP") == 0)
+    if (length > 4 && strcmp(file_name + length - 4, ".CPP") == 0)
     {
         cur_file_type = CPLUSPLUS_SOURCE;
         return 0;

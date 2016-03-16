@@ -70,5 +70,7 @@ int is_word_start(char *place);
 
 int parse_highlighting(v_file_text *file_struct);
 
+int determine_file_type(char *file_name);
+
 #endif //VIC_LINES_LIST_H
 
