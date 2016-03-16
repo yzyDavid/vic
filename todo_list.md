@@ -7,6 +7,8 @@
 ##issues:
 * insert mode may have problem against length = 0
 
+* editing empty file and creating new file lead to segfault.
+
 ##todo memo:
 * implements menu bar
 
