@@ -22,6 +22,9 @@ unsigned int cur_left;
 unsigned int console_lines = CONSOLE_LINES;
 unsigned int console_columns = CONSOLE_COLUMNS;
 
+unsigned int screen_lines = SCREEN_LINES;
+unsigned int screen_columns = SCREEN_COLUMNS;
+
 char title_bar[CONSOLE_COLUMNS + 1];
 char menu_bar[CONSOLE_COLUMNS + 1];
 char status_bar[CONSOLE_COLUMNS + 1];

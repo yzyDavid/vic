@@ -204,14 +204,14 @@ int cursor_left()
 
 int cursor_right()
 {
-    assert(cur_column <= SCREEN_COLUMNS);
+    assert(cur_column <= screen_columns);
     ++cur_column;
     if (!is_position_in_file())
     {
         cur_column--;
         return 0;
     }
-    else if (cur_column >= SCREEN_COLUMNS)
+    else if (cur_column >= screen_columns)
     {
         --cur_column;
         roll_rightward(1);
@@ -286,7 +286,7 @@ int cursor_down()
 
     if (is_position_in_file())
     {
-        if (cur_line > SCREEN_LINES)
+        if (cur_line > screen_lines)
         {
             cur_line--;
             roll_downward(1);
@@ -301,7 +301,7 @@ int cursor_down()
     {
         if (cur_line + cur_top - 1 <= lines)   //not exceed the lines EOF
         {
-            if (cur_line > SCREEN_LINES)
+            if (cur_line > screen_lines)
             {
                 cur_line--;
                 roll_downward(1);
@@ -326,7 +326,7 @@ int cursor_down()
             }
             else
             {
-                cur_column = SCREEN_COLUMNS;
+                cur_column = screen_columns;
                 cur_left = length - cur_column + 1;
                 return 1;
             }

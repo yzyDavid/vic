@@ -10,6 +10,7 @@
 #include "log_module.h"
 
 int changed_flag = UNCHANGED;
+int filename_assigned_flag = 0;
 
 v_file_text *cur_file;
 char cur_file_name[FILE_LINE_LENGTH];

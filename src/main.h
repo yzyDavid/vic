@@ -9,12 +9,12 @@ int main(int, char **);
 
 int init_global();
 
-#ifdef __linux
+#ifdef __linux__
 #define __VIC_POSIX
 #pragma message("OS: LINUX")
 #endif
 
-#ifdef __OSX
+#ifdef __APPLE__
 #define __VIC_POSIX
 #pragma message("OS: OSX")
 #endif

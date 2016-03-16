@@ -17,4 +17,6 @@ int add_char(v_file_text *file_struct, unsigned int line, unsigned int position,
 
 int del_char(v_line *line, unsigned int index);
 
+int v_free_file(v_file_text *file_struct);
+
 #endif //VIC_FILE_SL_H

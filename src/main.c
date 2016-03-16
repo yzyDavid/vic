@@ -26,7 +26,15 @@ int main(int argc, char *argv[])
             break;
         case 2:
             strcpy(cur_file_name, argv[1]);
-            v_load_file(cur_file_name, cur_file);
+            if (v_load_file(cur_file_name, cur_file) == -1)
+            {
+                printf("File not exist!\n");
+                exit(-1);
+            }
+            else
+            {
+                filename_assigned_flag = 1;
+            }
             break;
     }
     determine_file_type(cur_file_name);

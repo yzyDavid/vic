@@ -128,3 +128,7 @@ int del_char(v_line *line, unsigned int index)
     return 0;
 }
 
+int v_free_file(v_file_text *file_struct)
+{
+
+}

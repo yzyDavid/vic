@@ -53,6 +53,9 @@
 #define redraw_ui __redraw_ui_posix
 #endif
 
+extern unsigned int screen_lines;
+extern unsigned int screen_columns;
+
 int __redraw_ui_posix();
 
 extern char title_bar[CONSOLE_COLUMNS + 1];

@@ -71,7 +71,15 @@ int insert_mode_process(int key_down)
             }
             else
             {
+                if (length == 0)
+                {
+                    delete_line(cur_file, cur_top + cur_line - 1);
+                    cursor_up();
+                }
+                else
+                {
 
+                }
             }
             break;
 

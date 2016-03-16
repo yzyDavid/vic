@@ -30,6 +30,8 @@
 
 extern int changed_flag;
 
+extern int filename_assigned_flag;
+
 extern char cur_file_name[FILE_LINE_LENGTH];
 
 extern int cur_file_type;

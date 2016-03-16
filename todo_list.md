@@ -9,6 +9,8 @@
 
 * editing empty file and creating new file lead to segfault.
 
+* backspace on first column should take care of cursor position.
+
 ##todo memo:
 * implements menu bar
 
@@ -23,4 +25,4 @@
 
 * allowing resize window.
 
-* ncurse can be taken into consideration.
+* ncurses can be taken into consideration.
