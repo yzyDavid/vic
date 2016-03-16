@@ -9,4 +9,12 @@ int main(int, char **);
 
 int init_global();
 
+#ifdef __linux
+#pragma message("OS: LINUX")
+#endif
+
+#ifdef _WIN32
+#pragma message("OS: WINDOWS")
+#endif
+
 #endif //VIC_MAIN_H

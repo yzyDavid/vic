@@ -11,9 +11,11 @@
 #ifdef VIC_LOG_ON
 #define print_log(content) __vic_log_output(content)
 #define init_log() __vic_init_log()
+#pragma message("debug log enabled")
 #else
 #define print_log(content)
 #define init_log()
+#pragma message("debug log disabled")
 #endif
 
 #include <stdio.h>

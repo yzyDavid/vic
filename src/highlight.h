@@ -11,3 +11,4 @@ extern char *cplusplus_highlight_list[];
 extern char word_char_list[];
 
 #endif //VIC_HIGHLIGHT_H
+
