@@ -25,7 +25,9 @@ int insert_mode_process(int key_down)
     {
         //arrow keys is also start with x1b!
         case '\x1b':  //Esc
+#ifdef __VIC_POSIX
             second_key_down = getchar();
+#endif
             switch (second_key_down)    //double stroke Esc to return to normal mode.
             {
                 case '\x1b':
@@ -33,7 +35,9 @@ int insert_mode_process(int key_down)
                     break;
 
                 case '\x5b':
+#ifdef __VIC_POSIX
                     second_key_down = getchar();
+#endif
                     switch (second_key_down)
                     {
                         case '\x41':     //up
@@ -75,10 +79,12 @@ int insert_mode_process(int key_down)
                 {
                     delete_line(cur_file, cur_top + cur_line - 1);
                     cursor_up();
+                    goto_line_end();
                 }
                 else
                 {
-
+                    connect_line(cur_file, cur_top + cur_line - 1);
+                    cursor_up();
                 }
             }
             break;

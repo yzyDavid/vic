@@ -165,6 +165,13 @@ int connect_line(v_file_text *file_struct, unsigned int line_to_fold)
     v_line *line_cur = get_line(file_struct, line_to_fold);
     unsigned int length_pre = get_length(line_pre);
     unsigned int length_cur = get_length(line_cur);
+    char *pre_end = line_pre->text;
+    pre_end += length_pre;
+    char *cur_start = line_cur->text;
+    memcpy(pre_end, cur_start, length_cur);
+    pre_end += length_cur;
+    *pre_end = 0;
+    delete_line(file_struct, line_to_fold);
     return 0;
 }
 

@@ -59,3 +59,4 @@ int init_global()
 
     return 0;
 }
+
