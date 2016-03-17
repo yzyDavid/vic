@@ -1,6 +1,13 @@
 //
 // Created by yzy on 3/12/16.
 //
+#include "main.h"
+
+#ifdef __VIC_POSIX
+
+#include <sys/ioctl.h>
+
+#endif
 
 #include <stdio.h>
 #include <string.h>
@@ -32,6 +39,11 @@ char status_bar_template[CONSOLE_COLUMNS + 1];
 
 int __redraw_ui_posix()
 {
+    console_lines = get_terminal_lines();
+    console_columns = get_terminal_columns();
+    screen_lines = console_lines - 3;
+    screen_columns = console_columns;
+
     strcpy(title_bar,
            "vic - ");
     strcpy(menu_bar,
@@ -64,13 +76,13 @@ int __redraw_ui_posix()
 
     //Line 3 to 23
     //actually a screen contains 21 lines.
-    for (int i = 0; i < 21; i++)
+    for (int i = 0; i < screen_lines; i++)
     {
         int finished_flag = 0;
         v_line *current_line = get_line(cur_file, i + cur_top);
         if (current_line != NULL)
         {
-            for (int j = 0; j < 80; j++)
+            for (int j = 0; j < screen_columns; j++)
             {
                 if (finished_flag || current_line->text[cur_left + j - 1] == 0)
                 {
@@ -157,4 +169,19 @@ int set_cursor_pos(int x, int y)
     printf("\33[%d;%dH", y, x);
     return 0;
 }
+
+unsigned int __get_terminal_lines_posix()
+{
+    struct winsize w;
+    ioctl(0, TIOCGWINSZ, &w);
+    return w.ws_row;
+}
+
+unsigned int __get_terminal_columns_posix()
+{
+    struct winsize w;
+    ioctl(0, TIOCGWINSZ, &w);
+    return w.ws_col;
+}
+
 

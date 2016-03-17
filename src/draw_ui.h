@@ -51,6 +51,8 @@
 
 #ifdef __VIC_POSIX
 #define redraw_ui __redraw_ui_posix
+#define get_terminal_columns __get_terminal_columns_posix
+#define get_terminal_lines __get_terminal_lines_posix
 #endif
 
 extern unsigned int screen_lines;
@@ -58,12 +60,17 @@ extern unsigned int screen_columns;
 
 int __redraw_ui_posix();
 
+unsigned int __get_terminal_columns_posix();
+
+unsigned int __get_terminal_lines_posix();
+
 extern char title_bar[CONSOLE_COLUMNS + 1];
 extern char menu_bar[CONSOLE_COLUMNS + 1];
 extern char status_bar[CONSOLE_COLUMNS + 1];
 
-#define SCREEN_LINES 21
-#define SCREEN_COLUMNS 80
+//defines default lines and columns for text area.
+#define SCREEN_LINES (CONSOLE_LINES - 3)
+#define SCREEN_COLUMNS CONSOLE_COLUMNS
 
 #define NORMAL "NORMAL"
 #define INSERT "INSERT"
