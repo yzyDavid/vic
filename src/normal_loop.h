@@ -19,4 +19,6 @@ int goto_line_end();
 
 int goto_line_start();
 
+int goto_line_actual_start();
+
 #endif //VIC_NORMAL_LOOP_H

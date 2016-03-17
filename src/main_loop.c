@@ -11,14 +11,19 @@
 #include "normal_loop.h"
 #include "insert_loop.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
 int mode_flag = NORMAL_MODE;
 
 int main_loop()
 {
     //This function assume the display back is disabled.
     int key_down = 0;
-    while ((key_down = getchar()))
+    while (1)
     {
+#ifdef __VIC_POSIX
+        key_down = getchar();
+#endif
         switch (mode_flag)
         {
             case NORMAL_MODE:
@@ -66,3 +71,5 @@ int is_position_in_file()
 }
 
 
+
+#pragma clang diagnostic pop

@@ -18,11 +18,15 @@ int normal_mode_process(int key_down)
     switch (key_down)
     {
         case '\x1b':  //Esc
+#ifdef __VIC_POSIX
             second_key_down = getchar();
+#endif
             switch (second_key_down)    //double stroke Esc to return to normal mode.
             {
                 case '\x5b':
+#ifdef __VIC_POSIX
                     second_key_down = getchar();
+#endif
                     switch (second_key_down)
                     {
                         case '\x41':     //up
@@ -140,6 +144,7 @@ int normal_mode_process(int key_down)
             break;
 
         case '^':   //goto first char of line.
+            goto_line_actual_start();
             break;
 
         case '0':   //goto fixed first column.
@@ -377,4 +382,30 @@ int goto_line_start()
 
     return 0;
 }
+
+int goto_line_actual_start()
+{
+    unsigned int actual_column = 0;
+    actual_column = cur_left + cur_column - 1;
+    unsigned int repeat = actual_column - 1;
+    unsigned length = get_length(get_line(cur_file, cur_top + cur_line - 1));
+    char *pos = get_line(cur_file, cur_top + cur_line - 1)->text;
+    while (repeat > 0)
+    {
+        if (*pos++ == ' ')
+        {
+            repeat--;
+        }
+        else
+        {
+            break;
+        }
+    }
+    for (int i = 0; i < repeat; i++)
+    {
+        cursor_left();
+    }
+    return 0;
+}
+
 

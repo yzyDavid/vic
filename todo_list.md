@@ -23,6 +23,6 @@
 * redesign drawing methods
 	cross platform should be considered.
 
+####below finished, curses are not taken.
 * allowing resize window.
-
 * ncurses can be taken into consideration.

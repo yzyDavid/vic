@@ -149,6 +149,7 @@ int delete_line(v_file_text *file_struct, unsigned int line_to_delete)
     return 0;
 }
 
+///Not finished.
 int connect_line(v_file_text *file_struct, unsigned int line_to_fold)
 {
     if (line_to_fold == 0)
@@ -289,3 +290,4 @@ int is_word_start(char *place)
     }
     return 0;
 }
+
