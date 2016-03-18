@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include "file_struct.h"
 #include "highlight.h"
 #include "log_module.h"
@@ -114,6 +115,8 @@ v_line *create_empty_line()
     v_line *to_create = NULL;
     to_create = malloc(sizeof(v_line));
     to_create->text[0] = 0;
+    _Static_assert(sizeof(((v_line *) (0))->text) > 100, "...");
+    memset(to_create->text, 0, sizeof(((v_line *) (0))->text));
     return to_create;
 }
 

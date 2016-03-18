@@ -107,7 +107,7 @@ int add_char(v_file_text *file_struct, unsigned int line, unsigned int position,
     v_line *this_line = get_line(file_struct, line);
     length = get_length(this_line);
 //    length = (length == 0) ? 1 : length;
-    for (int i = length; i >= position; i--)
+    for (int i = ((length < LINE_LENGTH) ? length : LINE_LENGTH); i >= position; i--)
     {
         this_line->text[i] = this_line->text[i - 1];
     }
@@ -130,5 +130,5 @@ int del_char(v_line *line, unsigned int index)
 
 int v_free_file(v_file_text *file_struct)
 {
-
+    return -1;
 }
