@@ -18,6 +18,8 @@
 
 * take nano as a goal.
 
+* new file , add chars and save has segfault.
+
 * highlight string, comments, etc.
 
 * redesign drawing methods
