@@ -57,15 +57,27 @@ int normal_mode_process(int key_down)
 
         case '!':   //quit directly.
             enable_display_back();
-            set_cursor_pos(80, 24);
+            set_cursor_pos(console_columns, console_lines);
             exit(0);
+            break;
+
+        case '1':   //New File.
+            if (changed_flag == UNCHANGED || changed_flag == UNSAVED)
+            {
+                enable_display_back();
+                set_cursor_pos(console_columns, console_lines);
+            }
+            else
+            {
+                changed_flag = UNSAVED;
+            }
             break;
 
         case 'q':   //quit, is saved should be checked.
             if (changed_flag == UNCHANGED || changed_flag == UNSAVED)
             {
                 enable_display_back();
-                set_cursor_pos(80, 24);
+                set_cursor_pos(console_columns, console_lines);
                 exit(0);
             }
             else

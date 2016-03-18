@@ -10,6 +10,7 @@
 #include "draw_ui.h"
 #include "normal_loop.h"
 #include "insert_loop.h"
+#include "bottomline_loop.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -35,6 +36,7 @@ int main_loop()
                 break;
 
             case BOTTOMLINE_MODE:
+                bottomline_mode_process(key_down);
                 break;
 
             default:

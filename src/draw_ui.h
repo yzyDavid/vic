@@ -58,6 +58,9 @@
 extern unsigned int screen_lines;
 extern unsigned int screen_columns;
 
+extern unsigned int console_lines;
+extern unsigned int console_columns;
+
 int __redraw_ui_posix();
 
 unsigned int __get_terminal_columns_posix();

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 project(vic)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wall")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wall")
 
 IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_C_COMPILER clang)
@@ -33,6 +33,6 @@ set(SOURCE_FILES src/main.c
         src/highlight.c
         src/highlight.h
         src/log_module.c
-        src/log_module.h)
+        src/log_module.h src/bottomline_loop.c src/bottomline_loop.h)
 add_executable(vic_test ${SOURCE_FILES_TEST})
 add_executable(vic ${SOURCE_FILES})

@@ -128,7 +128,22 @@ int del_char(v_line *line, unsigned int index)
     return 0;
 }
 
+//this func also freed the file_struct.
 int v_free_file(v_file_text *file_struct)
 {
+    v_line *head = file_struct->head;
+    v_line *cur = head;
+    v_line *tmp = NULL;
+    while (cur->next != NULL)
+    {
+        tmp = cur->next;
+        free(cur);
+        cur = tmp;
+    }
+    free(cur);
+    free(file_struct);
+    file_struct = NULL;
     return -1;
 }
+
+
