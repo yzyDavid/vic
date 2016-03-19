@@ -25,6 +25,10 @@ int main_loop()
 #ifdef __VIC_POSIX
         key_down = getchar();
 #endif
+
+#ifdef __VIC_WIN
+#endif
+
         switch (mode_flag)
         {
             case NORMAL_MODE:

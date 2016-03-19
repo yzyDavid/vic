@@ -27,7 +27,6 @@ int insert_mode_process(int key_down)
         case '\x1b':  //Esc
 #ifdef __VIC_POSIX
             second_key_down = getchar();
-#endif
             switch (second_key_down)    //double stroke Esc to return to normal mode.
             {
                 case '\x1b':
@@ -35,9 +34,7 @@ int insert_mode_process(int key_down)
                     break;
 
                 case '\x5b':
-#ifdef __VIC_POSIX
                     second_key_down = getchar();
-#endif
                     switch (second_key_down)
                     {
                         case '\x41':     //up
@@ -64,6 +61,11 @@ int insert_mode_process(int key_down)
                 default:
                     break;
             }
+#endif
+
+#ifdef __VIC_WIN
+
+#endif
             break;
 
         case '\x7f':  //backspace

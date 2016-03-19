@@ -56,17 +56,30 @@
 #define set_cursor_pos __set_cursor_pos_posix
 #endif
 
+#ifdef __VIC_WIN
+#define redraw_ui __redraw_ui_win
+#define get_terminal_columns __get_terminal_columns_win
+#define get_terminal_lines __get_terminal_lines_win
+#define set_cursor_pos __set_cursor_pos_win
+#endif
+
 extern unsigned int screen_lines;
 extern unsigned int screen_columns;
 
 extern unsigned int console_lines;
 extern unsigned int console_columns;
 
+#ifdef __VIC_POSIX
 int __redraw_ui_posix();
 
 unsigned int __get_terminal_columns_posix();
 
 unsigned int __get_terminal_lines_posix();
+#endif
+
+#ifdef __VIC_WIN
+int __redraw_ui_win();
+#endif
 
 extern char title_bar[CONSOLE_COLUMNS + 1];
 extern char menu_bar[CONSOLE_COLUMNS + 1];
@@ -87,7 +100,9 @@ int roll_rightward(int repeat);
 
 int roll_downward(int repeat);
 
+#ifdef __VIC_POSIX
 int __set_cursor_pos_posix(int x, int y);
+#endif
 
 extern unsigned int cur_line;
 extern unsigned int cur_column;

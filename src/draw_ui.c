@@ -40,6 +40,7 @@ char status_bar_template[CONSOLE_COLUMNS + 1];
 
 char bottomline_text[CONSOLE_COLUMNS + 1];
 
+#ifdef __VIC_POSIX
 int __redraw_ui_posix()
 {
     console_lines = get_terminal_lines();
@@ -122,6 +123,7 @@ int __redraw_ui_posix()
 
     return 0;
 }
+#endif
 
 int gen_status_bar(char *status_bar)
 {
@@ -171,6 +173,8 @@ int roll_downward(int repeat)
 
 //set cursor position to the assigned pos.
 //relative to the actually console pos.
+#ifdef __VIC_POSIX
+
 int __set_cursor_pos_posix(int x, int y)
 {
     printf("\33[%d;%dH", y, x);
@@ -191,4 +195,29 @@ unsigned int __get_terminal_columns_posix()
     return w.ws_col;
 }
 
+#endif
+
+#ifdef __VIC_WIN
+
+int __redraw_ui_win()
+{
+    return 0;
+}
+
+int __set_cursor_pos_win(int x, int y)
+{
+    return 0;
+}
+
+unsigned int __get_terminal_lines_win()
+{
+    return (unsigned int) -1;
+}
+
+unsigned int __get_terminal_columns_win()
+{
+    return (unsigned int) -1;
+}
+
+#endif
 

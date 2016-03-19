@@ -14,7 +14,6 @@ extern int mode_flag;
 
 int main_loop();
 
-
 int is_position_in_file();
 
 #endif //VIC_MAIN_LOOP_H
