@@ -6,6 +6,11 @@
 #ifdef __VIC_POSIX
 #include <termios.h>
 #endif
+
+#ifdef __VIC_WIN
+#include <windows.h>
+#endif
+
 #include <stdio.h>
 
 #include "termios_set.h"

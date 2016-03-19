@@ -68,6 +68,11 @@ int v_save_file(const char *filename, v_file_text *file_struct)
     v_line *cur_line;
     char *cur_char;
 
+    if (strlen(filename) == 0)
+    {
+        return -1;
+    }
+
     if ((fp = fopen(filename, "w")) == NULL)
     {
         return -1;
