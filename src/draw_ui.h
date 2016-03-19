@@ -70,6 +70,7 @@ unsigned int __get_terminal_lines_posix();
 extern char title_bar[CONSOLE_COLUMNS + 1];
 extern char menu_bar[CONSOLE_COLUMNS + 1];
 extern char status_bar[CONSOLE_COLUMNS + 1];
+extern char bottomline_text[CONSOLE_COLUMNS + 1];
 
 //defines default lines and columns for text area.
 #define SCREEN_LINES (CONSOLE_LINES - 3)

@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <inttypes.h>
 
 #include "draw_ui.h"
 #include "file_struct.h"
@@ -37,6 +38,8 @@ char menu_bar[CONSOLE_COLUMNS + 1];
 char status_bar[CONSOLE_COLUMNS + 1];
 char status_bar_template[CONSOLE_COLUMNS + 1];
 
+char bottomline_text[CONSOLE_COLUMNS + 1];
+
 int __redraw_ui_posix()
 {
     console_lines = get_terminal_lines();
@@ -49,7 +52,7 @@ int __redraw_ui_posix()
     strcpy(menu_bar,
            "New File[1] Save[2,s]                                  -- menu --");
     strcpy(status_bar_template,
-           "status: Line: %4u Column: %3u                         -- %s --             ");
+           "status: Line: "PRIu32" Column: "PRIu32"                         -- %s --");
 
     gen_status_bar(status_bar);
 
