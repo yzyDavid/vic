@@ -112,7 +112,8 @@ int __get_self_window_win()
     {
         return 0;
     }
-    DWORD _BUFSIZE = 1024;
+    DWORD _BUFSIZE;
+    _BUFSIZE = 1024;
     char pszNewWindowTitle[_BUFSIZE];
 
     wsprintf(pszNewWindowTitle, "%d/%d",
@@ -134,10 +135,26 @@ int __get_self_window_win()
 #endif
 
 #ifdef __VIC_WIN
+
 //This function performs as getchar() in the c std.
 //return -1 as error.
 int __get_char_win()
 {
+    PINPUT_RECORD pBuffer = NULL;
+    pBuffer = malloc(1024 * 64);
+    if (pBuffer == NULL)
+    {
+        Sleep(1000);
+        return -1;
+    }
+    DWORD nLength = (1024 * 64) / sizeof(INPUT_RECORD);
+    DWORD nums;
+    LPDWORD lpNumberOfEventsRead = &nums;
+    if (!ReadConsoleInput(hConsole, pBuffer, nLength, lpNumberOfEventsRead))
+    {
+        return -1;
+    }
     return -1;
 }
+
 #endif

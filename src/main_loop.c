@@ -11,6 +11,7 @@
 #include "normal_loop.h"
 #include "insert_loop.h"
 #include "bottomline_loop.h"
+#include "termios_set.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -27,7 +28,7 @@ int main_loop()
 #endif
 
 #ifdef __VIC_WIN
-
+        key_down = __get_char_win();
 #endif
 
         switch (mode_flag)
