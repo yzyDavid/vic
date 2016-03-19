@@ -27,6 +27,7 @@ int main_loop()
 #endif
 
 #ifdef __VIC_WIN
+
 #endif
 
         switch (mode_flag)

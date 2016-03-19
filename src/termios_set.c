@@ -1,5 +1,6 @@
 //
 // Created by yzy on 3/12/16.
+//This file defines functions and variables relative to platform, handling console behaviors.
 //
 #include "main.h"
 
@@ -8,7 +9,10 @@
 #endif
 
 #ifdef __VIC_WIN
+
 #include <windows.h>
+#include <wincon.h>
+
 #endif
 
 #include <stdio.h>
@@ -21,6 +25,11 @@ static struct termios disabled;
 static struct termios enabled;
 #endif
 
+#ifdef __VIC_WIN
+static HANDLE hConsole = 0;
+static CONSOLE_CURSOR_INFO *pOldCurInfo;
+#endif
+
 int init_display_back()
 {
 #ifdef __VIC_POSIX
@@ -30,6 +39,16 @@ int init_display_back()
     disabled.c_lflag &= ~ECHO;
     disabled.c_cc[VMIN] = 1;
     disabled.c_cc[VTIME] = 0;
+#endif
+
+#ifdef __VIC_WIN
+    pOldCurInfo = malloc(sizeof(CONSOLE_CURSOR_INFO));
+    CONSOLE_CURSOR_INFO *lpConInfo = malloc(sizeof(CONSOLE_CURSOR_INFO));
+    lpConInfo->bVisible = TRUE;
+    lpConInfo->dwSize = 100;
+    __get_self_window_win();
+    GetConsoleCursorInfo(hConsole, pOldCurInfo);
+    SetConsoleCursorInfo(hConsole, lpConInfo);
 #endif
     return 0;
 }
@@ -56,6 +75,14 @@ int hide_cursor()
 #ifdef __VIC_POSIX
     printf(HIDE_CURSOR);
 #endif
+
+#ifdef __VIC_WIN
+    CONSOLE_CURSOR_INFO *lpConInfo = malloc(sizeof(CONSOLE_CURSOR_INFO));
+    lpConInfo->bVisible = FALSE;
+    lpConInfo->dwSize = 100;
+    __get_self_window_win();
+    SetConsoleCursorInfo(hConsole, lpConInfo);
+#endif
     return 0;
 }
 
@@ -64,6 +91,53 @@ int show_cursor()
 #ifdef __VIC_POSIX
     printf(SHOW_CURSOR);
 #endif
+
+#ifdef __VIC_WIN
+    CONSOLE_CURSOR_INFO *lpConInfo = malloc(sizeof(CONSOLE_CURSOR_INFO));
+    lpConInfo->bVisible = TRUE;
+    lpConInfo->dwSize = 100;
+    __get_self_window_win();
+    SetConsoleCursorInfo(hConsole, lpConInfo);
+#endif
     return 0;
 }
 
+#ifdef __VIC_WIN
+
+//This function set the global hConsole.
+//Also set console title.
+int __get_self_window_win()
+{
+    if (hConsole != 0)
+    {
+        return 0;
+    }
+    DWORD _BUFSIZE = 1024;
+    char pszNewWindowTitle[_BUFSIZE];
+
+    wsprintf(pszNewWindowTitle, "%d/%d",
+             GetTickCount(),
+             GetCurrentProcessId());
+
+    SetConsoleTitle(pszNewWindowTitle);
+
+    Sleep(40);
+
+    hConsole = FindWindow(NULL, pszNewWindowTitle);
+
+    // Restore original window title.
+
+    SetConsoleTitle("vic");
+    return 0;
+}
+
+#endif
+
+#ifdef __VIC_WIN
+//This function performs as getchar() in the c std.
+//return -1 as error.
+int __get_char_win()
+{
+    return -1;
+}
+#endif

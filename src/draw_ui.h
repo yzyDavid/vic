@@ -78,7 +78,13 @@ unsigned int __get_terminal_lines_posix();
 #endif
 
 #ifdef __VIC_WIN
+
 int __redraw_ui_win();
+
+unsigned int __get_terminal_columns_win();
+
+unsigned int __get_terminal_lines_win();
+
 #endif
 
 extern char title_bar[CONSOLE_COLUMNS + 1];
@@ -102,6 +108,12 @@ int roll_downward(int repeat);
 
 #ifdef __VIC_POSIX
 int __set_cursor_pos_posix(int x, int y);
+#endif
+
+#ifdef __VIC_WIN
+
+int __set_cursor_pos_win(int x, int y);
+
 #endif
 
 extern unsigned int cur_line;

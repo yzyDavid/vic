@@ -15,6 +15,10 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef __VIC_WIN
+    __get_self_window_win();
+#endif
+
     init_log();
     cur_file = malloc(sizeof(v_file_text));
     switch (argc)

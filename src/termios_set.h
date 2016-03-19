@@ -23,4 +23,12 @@ int hide_cursor();
 
 int show_cursor();
 
+#ifdef __VIC_WIN
+
+int __get_self_window_win();
+
+int __get_char_win();
+
+#endif
+
 #endif //VIC_TERMIOS_SET_H

@@ -9,9 +9,16 @@
 
 #endif
 
+#ifdef __VIC_WIN
+
+#include <windows.h>
+
+#endif
+
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
+#include <stdlib.h>
 
 #include "draw_ui.h"
 #include "file_struct.h"
@@ -201,6 +208,39 @@ unsigned int __get_terminal_columns_posix()
 
 int __redraw_ui_win()
 {
+    console_lines = get_terminal_lines();
+    console_columns = get_terminal_columns();
+    screen_lines = console_lines - 3;
+    screen_columns = console_columns;
+
+    strcpy(title_bar,
+           "vic - ");
+    strcpy(menu_bar,
+           "New File[1,n] Save[2,s]                                --  menu  --");
+    strcpy(status_bar_template,
+           "status: Line: %4u Column: %4u                        -- %s --");
+
+    gen_status_bar(status_bar);
+
+    if (cur_file_name[0] == 0)
+    {
+        strcat(title_bar, "New File");
+    }
+    else
+    {
+        strcat(title_bar, cur_file_name);
+    }
+
+    system("CLS");
+
+    //Line 1:
+    printf("%s", title_bar);
+    printf("\n");
+
+    //Line 2:
+    printf("%s", menu_bar);
+    printf("\n");
+
     return 0;
 }
 
@@ -209,14 +249,16 @@ int __set_cursor_pos_win(int x, int y)
     return 0;
 }
 
+//return 0 as error.
 unsigned int __get_terminal_lines_win()
 {
-    return (unsigned int) -1;
+    return 0;
 }
 
+//return 0 as error.
 unsigned int __get_terminal_columns_win()
 {
-    return (unsigned int) -1;
+    return 0;
 }
 
 #endif
