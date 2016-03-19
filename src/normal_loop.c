@@ -62,6 +62,7 @@ int normal_mode_process(int key_down)
             break;
 
         case '1':   //New File.
+        case 'n':
             if (changed_flag == UNCHANGED || changed_flag == UNSAVED)
             {
                 enable_display_back();
@@ -157,6 +158,29 @@ int normal_mode_process(int key_down)
             break;
 
         case 'e':   //word-end forward.
+        {
+            int position = cur_left + cur_column - 1;
+            int counter = 0;
+            char *cur = get_line(cur_file, cur_top + cur_line - 1)->text;
+            cur += cur_left + cur_column - 2;   //to be checked.
+            if (is_word_end(cur))
+            {
+                position++;
+                counter++;
+                cur++;
+            }
+            for (; position < get_length(get_line(cur_file, cur_line + cur_top - 1)); position++, counter++)
+            {
+                if (is_word_end(cur++))
+                {
+                    break;
+                }
+            }
+            for (; counter > 0; counter--)
+            {
+                cursor_right();
+            }
+        }
             break;
 
         case 'i':   //insert.

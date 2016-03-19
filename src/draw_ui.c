@@ -50,7 +50,7 @@ int __redraw_ui_posix()
     strcpy(title_bar,
            "vic - ");
     strcpy(menu_bar,
-           "New File[1] Save[2,s]                                  --  menu  --");
+           "New File[1,n] Save[2,s]                                --  menu  --");
     strcpy(status_bar_template,
            "status: Line: %4u Column: %4u                        -- %s --");
 
@@ -171,7 +171,7 @@ int roll_downward(int repeat)
 
 //set cursor position to the assigned pos.
 //relative to the actually console pos.
-int set_cursor_pos(int x, int y)
+int __set_cursor_pos_posix(int x, int y)
 {
     printf("\33[%d;%dH", y, x);
     return 0;

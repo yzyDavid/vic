@@ -53,6 +53,7 @@
 #define redraw_ui __redraw_ui_posix
 #define get_terminal_columns __get_terminal_columns_posix
 #define get_terminal_lines __get_terminal_lines_posix
+#define set_cursor_pos __set_cursor_pos_posix
 #endif
 
 extern unsigned int screen_lines;
@@ -86,7 +87,7 @@ int roll_rightward(int repeat);
 
 int roll_downward(int repeat);
 
-int set_cursor_pos(int x, int y);
+int __set_cursor_pos_posix(int x, int y);
 
 extern unsigned int cur_line;
 extern unsigned int cur_column;
