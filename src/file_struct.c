@@ -247,6 +247,7 @@ int parse_highlighting(v_file_text *file_struct)
     return 0;
 }
 
+//use ugly globals to return result.
 int determine_file_type(char *file_name)
 {
     unsigned length = (unsigned int) strlen(file_name);
@@ -284,10 +285,30 @@ int determine_file_type(char *file_name)
     return 0;
 }
 
+//no edge-checking!
 //caution!! this function check place before the pointer place!!
 int is_word_start(char *place)
 {
     if (*(place - 1) != ' ')
+    {
+        return 0;
+    }
+    for (char *i = word_char_list; *i != 0; i++)
+    {
+        if (*place == *i)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+//no edge-checking!
+//This function check place after the pointer given.
+//use 0 as none-char judgment reason.
+int is_word_end(char *place)
+{
+    if (*(place + 1) != ' ')
     {
         return 0;
     }

@@ -48,5 +48,5 @@ char *cplusplus_highlight_list[] = {
         ""
 };
 
-char word_char_list[] = "qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM";
+char word_char_list[] = "qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 

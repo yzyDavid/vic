@@ -11,7 +11,7 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(CMAKE_C_COMPILER gcc)
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
 
 set(SOURCE_FILES_TEST src/test/testmain.c src/test/printf_color.c)
 set(SOURCE_FILES src/main.c

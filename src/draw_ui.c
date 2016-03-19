@@ -50,16 +50,20 @@ int __redraw_ui_posix()
     strcpy(title_bar,
            "vic - ");
     strcpy(menu_bar,
-           "New File[1] Save[2,s]                                  -- menu --");
+           "New File[1] Save[2,s]                                  --  menu  --");
     strcpy(status_bar_template,
-           "status: Line: "PRIu32" Column: "PRIu32"                         -- %s --");
+           "status: Line: %4u Column: %4u                        -- %s --");
 
     gen_status_bar(status_bar);
 
     if (cur_file_name[0] == 0)
+    {
         strcat(title_bar, "New File");
+    }
     else
+    {
         strcat(title_bar, cur_file_name);
+    }
 
     printf("\n");
     printf(CLEAR);
