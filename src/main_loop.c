@@ -4,8 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+
+#ifdef __VIC_WIN
 #include <windows.h>
 #include <wincon.h>
+#endif
 
 #include "main_loop.h"
 #include "file_struct.h"

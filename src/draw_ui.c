@@ -13,6 +13,8 @@
 
 #include <windows.h>
 
+#define BACKGROUND_INTENSITY 0
+
 #endif
 
 #include <stdio.h>
@@ -247,6 +249,8 @@ int __redraw_ui_win()
     printf("\n");
 
     //Belows are file content area.
+    SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | BACKGROUND_INTENSITY);
+
     for (int i = 0; i < screen_lines; i++)
     {
         int finished_flag = 0;
@@ -262,17 +266,17 @@ int __redraw_ui_win()
                 }
                 else
                 {
-                    /*
                     if (current_line->info[cur_left + j - 1] == KEYWORD)
                     {
-                        SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+                        SetConsoleTextAttribute(hStdOut,
+                                                FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
                     }
                     printf("%c", current_line->text[cur_left + j - 1]);
                     if (current_line->info[cur_left + j - 1] == KEYWORD)
                     {
-                        SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+                        SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED |
+                                                         BACKGROUND_INTENSITY);
                     }
-                     */
                 }
             }
         }
@@ -284,7 +288,7 @@ int __redraw_ui_win()
     printf("%s", status_bar);
     SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | BACKGROUND_INTENSITY);
 
-    set_cursor_pos(cur_column, cur_line + 2);
+    set_cursor_pos(cur_column-1, cur_line + 2-1);
 
     return 0;
 }
@@ -301,13 +305,17 @@ int __set_cursor_pos_win(int x, int y)
 //return 0 as error.
 unsigned int __get_terminal_lines_win()
 {
-    return 0;
+    CONSOLE_SCREEN_BUFFER_INFO info;
+    GetConsoleScreenBufferInfo(hStdOut, &info);
+    return (unsigned int) info.srWindow.Bottom - info.srWindow.Top;
 }
 
 //return 0 as error.
 unsigned int __get_terminal_columns_win()
 {
-    return 0;
+    CONSOLE_SCREEN_BUFFER_INFO info;
+    GetConsoleScreenBufferInfo(hStdOut, &info);
+    return (unsigned int) info.srWindow.Right - info.srWindow.Left;
 }
 
 //Not in use.

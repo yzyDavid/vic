@@ -229,7 +229,7 @@ int parse_highlighting(v_file_text *file_struct)
             {
                 memset(word_temp, 0, sizeof(word_temp));
                 strncpy(word_temp, line_processing->text + j, (size_t) (end - j + 1));
-                print_log(word_temp);
+//                print_log(word_temp);
             }
             for (k = 0; *(highlight_list[k]) != 0; k++)
             {

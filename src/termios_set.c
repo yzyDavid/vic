@@ -3,9 +3,12 @@
 //This file defines functions and variables relative to platform, handling console behaviors.
 //
 #include "main.h"
+#include "log_module.h"
 
 #ifdef __VIC_POSIX
+
 #include <termios.h>
+
 #endif
 
 #ifdef __VIC_WIN
@@ -16,7 +19,12 @@
 #endif
 
 #include <stdio.h>
+
+#ifdef __VIC_WIN
+
 #include <afxres.h>
+
+#endif
 
 #include "termios_set.h"
 #include "draw_ui.h"
@@ -156,6 +164,7 @@ int __get_self_window_win()
 //return -1 as error.
 int __get_char_win()
 {
+    return getchar();
     PINPUT_RECORD pBuffer = NULL;
     pBuffer = malloc(1024 * 64);
     if (pBuffer == NULL)
@@ -172,15 +181,25 @@ int __get_char_win()
     }
     for (int i = 0; i < nums; i++)
     {
+        char log[100];
+        sprintf(log, "%lu\n", nums);
+        print_log(log);
+
         switch (pBuffer[i].EventType)
         {
             case KEY_EVENT:
                 if (pBuffer[i].Event.KeyEvent.bKeyDown)
                 {
-                    return pBuffer[i].Event.KeyEvent.uChar.AsciiChar;
+                    char unicode[100] = {};
+                    char target[100] = {};
+                    memcpy(unicode, &pBuffer[i].Event.KeyEvent.uChar.UnicodeChar, sizeof(WCHAR));
+                    WideCharToMultiByte(CP_ACP, 0, (LPCWSTR) unicode, 1, target, 100, 0, 0);
+                    return target[0];
+//                    return pBuffer[i].Event.KeyEvent.uChar.AsciiChar;
                 }
                 break;
 
+                //Might have problem here.
             case WINDOW_BUFFER_SIZE_EVENT:
                 console_columns = (unsigned int) pBuffer[i].Event.WindowBufferSizeEvent.dwSize.X;
                 console_lines = (unsigned int) pBuffer[i].Event.WindowBufferSizeEvent.dwSize.Y;
