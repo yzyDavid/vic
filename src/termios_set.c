@@ -16,6 +16,7 @@
 #endif
 
 #include <stdio.h>
+#include <afxres.h>
 
 #include "termios_set.h"
 #include "draw_ui.h"
@@ -153,6 +154,29 @@ int __get_char_win()
     if (!ReadConsoleInput(hConsole, pBuffer, nLength, lpNumberOfEventsRead))
     {
         return -1;
+    }
+    for (int i = 0; i < nums; i++)
+    {
+        switch (pBuffer[i].EventType)
+        {
+            case KEY_EVENT:
+                if(pBuffer[i].Event.KeyEvent.bKeyDown)
+                {
+                    return pBuffer[i].Event.KeyEvent.uChar.AsciiChar;
+                }
+                break;
+
+            case WINDOW_BUFFER_SIZE_EVENT:
+                break;
+
+            //I do not wanna handle mouse event now.
+            case MOUSE_EVENT:
+            //Event belows must be handled by OS.
+            case FOCUS_EVENT:
+            case MENU_EVENT:
+            default:
+                break;
+        }
     }
     return -1;
 }
