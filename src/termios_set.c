@@ -23,6 +23,7 @@
 #ifdef __VIC_WIN
 
 #include <afxres.h>
+#include <conio.h>
 
 #endif
 
@@ -164,6 +165,7 @@ int __get_self_window_win()
 //return -1 as error.
 int __get_char_win()
 {
+    return getch();
     return getchar();
     PINPUT_RECORD pBuffer = NULL;
     pBuffer = malloc(1024 * 64);

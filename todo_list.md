@@ -14,6 +14,9 @@
 ##todo memo:
 * get terminal lines on windows should be implements.
 
+* getchar / WIN32 API / getch
+  all can be taken into consideration.
+
 * implements menu bar
 
 * implements new file. open/save file, etc.
