@@ -12,6 +12,8 @@
 * backspace on first column should take care of cursor position.
 
 ##todo memo:
+* get terminal lines on windows should be implements.
+
 * implements menu bar
 
 * implements new file. open/save file, etc.

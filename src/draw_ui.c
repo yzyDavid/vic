@@ -23,6 +23,7 @@
 #include "draw_ui.h"
 #include "file_struct.h"
 #include "main_loop.h"
+#include "termios_set.h"
 
 //This globals defines the position of "cursor".
 //relative to the line3-23 (actually contains the file) part.
@@ -34,9 +35,11 @@ unsigned int cur_column;
 unsigned int cur_top;
 unsigned int cur_left;
 
+//The lines and columns of the console window.
 unsigned int console_lines = CONSOLE_LINES;
 unsigned int console_columns = CONSOLE_COLUMNS;
 
+//The lines and columns of the text area.
 unsigned int screen_lines = SCREEN_LINES;
 unsigned int screen_columns = SCREEN_COLUMNS;
 
@@ -234,18 +237,64 @@ int __redraw_ui_win()
     system("CLS");
 
     //Line 1:
+    SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
     printf("%s", title_bar);
     printf("\n");
 
     //Line 2:
+    SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
     printf("%s", menu_bar);
     printf("\n");
+
+    //Belows are file content area.
+    for (int i = 0; i < screen_lines; i++)
+    {
+        int finished_flag = 0;
+        v_line *current_line = get_line(cur_file, i + cur_top);
+        if (current_line != NULL)
+        {
+            for (int j = 0; j < screen_columns; j++)
+            {
+                if (finished_flag || current_line->text[cur_left + j - 1] == 0)
+                {
+                    finished_flag = 1;
+                    printf(" ");
+                }
+                else
+                {
+                    /*
+                    if (current_line->info[cur_left + j - 1] == KEYWORD)
+                    {
+                        SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+                    }
+                    printf("%c", current_line->text[cur_left + j - 1]);
+                    if (current_line->info[cur_left + j - 1] == KEYWORD)
+                    {
+                        SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+                    }
+                     */
+                }
+            }
+        }
+        printf("\n");
+    }
+
+    //Line status bar.
+    SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+    printf("%s", status_bar);
+    SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | BACKGROUND_INTENSITY);
+
+    set_cursor_pos(cur_column, cur_line + 2);
 
     return 0;
 }
 
 int __set_cursor_pos_win(int x, int y)
 {
+    COORD cur_pos;
+    cur_pos.X = (SHORT) x;
+    cur_pos.Y = (SHORT) y;
+    SetConsoleCursorPosition(hStdOut, cur_pos);
     return 0;
 }
 
@@ -259,6 +308,12 @@ unsigned int __get_terminal_lines_win()
 unsigned int __get_terminal_columns_win()
 {
     return 0;
+}
+
+//Not in use.
+int __set_text_color_win()
+{
+    return -1;
 }
 
 #endif

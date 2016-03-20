@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <windows.h>
+#include <wincon.h>
 
 #include "main_loop.h"
 #include "file_struct.h"

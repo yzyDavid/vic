@@ -27,8 +27,16 @@ static struct termios enabled;
 #endif
 
 #ifdef __VIC_WIN
+
+//This might be useless.
 static HANDLE hConsole = 0;
+
+//according to msdn, this handle should the one we use to control the input.
+HANDLE hStdIn = 0;
+HANDLE hStdOut = 0;
+
 static CONSOLE_CURSOR_INFO *pOldCurInfo;
+
 #endif
 
 int init_display_back()
@@ -105,11 +113,13 @@ int show_cursor()
 
 #ifdef __VIC_WIN
 
+//!!!This function should be called once on starting if its under Windows!!!
 //This function set the global hConsole.
 //Also set console title.
+//Also set console mode.
 int __get_self_window_win()
 {
-    if (hConsole != 0)
+    if (hStdIn != 0)
     {
         return 0;
     }
@@ -130,6 +140,11 @@ int __get_self_window_win()
     // Restore original window title.
 
     SetConsoleTitle("vic");
+    DWORD console_mode = 0;
+    hStdIn = GetStdHandle(STD_INPUT_HANDLE);
+    hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleMode(hStdIn, &console_mode);
+    SetConsoleMode(hStdIn, console_mode | ENABLE_WINDOW_INPUT);
     return 0;
 }
 
@@ -151,7 +166,7 @@ int __get_char_win()
     DWORD nLength = (1024 * 64) / sizeof(INPUT_RECORD);
     DWORD nums;
     LPDWORD lpNumberOfEventsRead = &nums;
-    if (!ReadConsoleInput(hConsole, pBuffer, nLength, lpNumberOfEventsRead))
+    if (!ReadConsoleInput(hStdIn, pBuffer, nLength, lpNumberOfEventsRead))
     {
         return -1;
     }
@@ -160,18 +175,20 @@ int __get_char_win()
         switch (pBuffer[i].EventType)
         {
             case KEY_EVENT:
-                if(pBuffer[i].Event.KeyEvent.bKeyDown)
+                if (pBuffer[i].Event.KeyEvent.bKeyDown)
                 {
                     return pBuffer[i].Event.KeyEvent.uChar.AsciiChar;
                 }
                 break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
+                console_columns = (unsigned int) pBuffer[i].Event.WindowBufferSizeEvent.dwSize.X;
+                console_lines = (unsigned int) pBuffer[i].Event.WindowBufferSizeEvent.dwSize.Y;
                 break;
 
-            //I do not wanna handle mouse event now.
+                //I do not wanna handle mouse event now.
             case MOUSE_EVENT:
-            //Event belows must be handled by OS.
+                //Event belows must be handled by OS.
             case FOCUS_EVENT:
             case MENU_EVENT:
             default:

@@ -11,7 +11,20 @@
 
 #include <stdio.h>
 
+#ifdef __VIC_WIN
+
+#include <windows.h>
+
+#endif
+
 #include "draw_ui.h"
+
+#ifdef __VIC_WIN
+
+extern HANDLE hStdIn;
+extern HANDLE hStdOut;
+
+#endif
 
 int init_display_back();
 
