@@ -219,4 +219,26 @@ int __get_char_win()
     return -1;
 }
 
+int __cls_win(HANDLE handle)
+{
+    COORD coordScreen = {0, 0};
+    DWORD cCharsWritten;
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    DWORD dwConSize;
+
+    GetConsoleScreenBufferInfo(handle, &csbi);
+    dwConSize = (DWORD) (csbi.dwSize.X * csbi.dwSize.Y);
+
+    FillConsoleOutputCharacter(handle, (TCHAR) ' ',
+                               dwConSize, coordScreen, &cCharsWritten);
+
+    GetConsoleScreenBufferInfo(handle, &csbi);
+
+    FillConsoleOutputAttribute(handle, csbi.wAttributes,
+                               dwConSize, coordScreen, &cCharsWritten);
+
+    SetConsoleCursorPosition(handle, coordScreen);
+    return 0;
+}
+
 #endif

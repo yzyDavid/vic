@@ -253,7 +253,7 @@ int __redraw_ui_win()
         strcat(title_bar, cur_file_name);
     }
 
-    system("CLS");
+    __cls_win(hStdOut);
 
     //Line 1:
     SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);

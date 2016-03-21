@@ -42,6 +42,8 @@ int __get_self_window_win();
 
 int __get_char_win();
 
+int __cls_win(HANDLE);
+
 #endif
 
 #endif //VIC_TERMIOS_SET_H
