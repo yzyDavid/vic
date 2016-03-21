@@ -99,7 +99,10 @@ int v_save_file(const char *filename, v_file_text *file_struct)
 int v_new_file(v_file_text *file_struct)
 {
     file_struct->head = malloc(sizeof(v_line));
-    file_struct->head->text[0] = 0;
+    memset(file_struct->head->text, 0, FILE_LINE_LENGTH);
+    memset(file_struct->head->info, 0, FILE_LINE_LENGTH);
+    file_struct->head->next = NULL;
+
     return 0;
 }
 

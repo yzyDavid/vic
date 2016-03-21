@@ -1,6 +1,9 @@
 //
 // Created by yzy on 3/13/16.
 //
+#ifdef __VIC_WIN
+#include <conio.h>
+#endif
 
 #include <stdio.h>
 #include "insert_loop.h"
@@ -64,7 +67,16 @@ int insert_mode_process(int key_down)
 #endif
 
 #ifdef __VIC_WIN
+            second_key_down = getch();
+            switch (second_key_down)
+            {
+                case '\x1b':
+                    mode_flag = NORMAL_MODE;
+                    break;
 
+                default:
+                    break;
+            }
 #endif
             break;
 
@@ -104,6 +116,7 @@ int insert_mode_process(int key_down)
             break;
 
         case '\n':  //Enter:
+        case '\x0d':    //might be \r ? used in Windows.
             split_line(cur_file, cur_top + cur_line - 1, cur_left + cur_column - 2);
             cursor_down();
             goto_line_start();
