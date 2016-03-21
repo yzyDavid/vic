@@ -13,7 +13,11 @@ ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
 
-set(SOURCE_FILES_TEST src/test/testmain.c src/test/printf_color.c)
+set(SOURCE_FILES_TEST src/test/testmain.c
+        src/test/printf_color.c)
+
+set(SOURCE_FILES_WIN_TEST src/test/win_test_main.c)
+
 set(SOURCE_FILES src/main.c
         src/file_struct.c
         src/file_struct.h
@@ -34,5 +38,8 @@ set(SOURCE_FILES src/main.c
         src/highlight.h
         src/log_module.c
         src/log_module.h src/bottomline_loop.c src/bottomline_loop.h)
+
 add_executable(vic_test ${SOURCE_FILES_TEST})
+add_executable(vic_win_test ${SOURCE_FILES_WIN_TEST})
 add_executable(vic ${SOURCE_FILES})
+
