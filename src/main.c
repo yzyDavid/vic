@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
         case 1:
             cur_file_name[0] = 0;
             v_new_file(cur_file);
+            filename_assigned_flag = 0;
             break;
         case 2:
             strcpy(cur_file_name, argv[1]);

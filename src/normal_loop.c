@@ -11,6 +11,7 @@
 #include "main_loop.h"
 #include "termios_set.h"
 #include "file_sl.h"
+#include "bottomline_loop.h"
 
 int normal_mode_process(int key_down)
 {
@@ -243,8 +244,16 @@ int normal_mode_process(int key_down)
 
         case '2':
         case 's':
-            v_save_file(cur_file_name, cur_file);
-            changed_flag = UNCHANGED;
+            if (strlen(cur_file_name) == 0)
+            {
+                mode_flag = BOTTOMLINE_MODE;
+                bottomline_sub_mode = BOTTOM_LINE_FILENAME;
+            }
+            else
+            {
+                v_save_file(cur_file_name, cur_file);
+                changed_flag = UNCHANGED;
+            }
             break;
 
         default:

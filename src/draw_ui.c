@@ -26,6 +26,7 @@
 #include "file_struct.h"
 #include "main_loop.h"
 #include "termios_set.h"
+#include "bottomline_loop.h"
 
 //This globals defines the position of "cursor".
 //relative to the line3-23 (actually contains the file) part.
@@ -50,6 +51,7 @@ char menu_bar[CONSOLE_COLUMNS + 1];
 char status_bar[CONSOLE_COLUMNS + 1];
 char status_bar_template[CONSOLE_COLUMNS + 1];
 
+//The string length should be checked by bottomline mode loop.
 char bottomline_text[CONSOLE_COLUMNS + 1];
 
 #ifdef __VIC_POSIX
@@ -162,6 +164,21 @@ int gen_status_bar(char *status_bar)
             sprintf(status_bar, status_bar_template, a_line, a_column, INSERT);
             break;
 
+        case BOTTOMLINE_MODE:
+            switch (bottomline_sub_mode)
+            {
+                case BOTTOM_LINE_FILENAME:
+                    sprintf(status_bar, ":%s", bottomline_text);
+                    break;
+
+                case BOTTOM_LINE_SEARCH:
+                    sprintf(status_bar, "/%s", bottomline_text);
+                    break;
+
+                default:
+                    sprintf(status_bar, "%s", bottomline_text);
+                    break;
+            }
         default:
             break;
     }
@@ -288,7 +305,7 @@ int __redraw_ui_win()
     printf("%s", status_bar);
     SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | BACKGROUND_INTENSITY);
 
-    set_cursor_pos(cur_column-1, cur_line + 2-1);
+    set_cursor_pos(cur_column - 1, cur_line + 2 - 1);
 
     return 0;
 }
