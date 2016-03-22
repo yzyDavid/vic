@@ -29,6 +29,11 @@ int v_load_file(const char *filename, v_file_text *file_struct)
 
     while ((ch = (char) fgetc(fp)) != EOF)
     {
+        if (ch == '\r')
+        {
+            continue;
+        }
+
         if (ch != '\n')
         {
             if (ch == '\t')

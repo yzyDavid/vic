@@ -65,7 +65,8 @@ int __redraw_ui_posix()
     strcpy(title_bar,
            "vic - ");
     strcpy(menu_bar,
-           "New File[1,n] Save[2,s]                                --  menu  --");
+//           "New File[1,n] Save[2,s]                                --  menu  --");
+           "New File[1,n] Save[2,s] Open[3,:]                      --  menu  --");
     strcpy(status_bar_template,
            "status: Line: %4u Column: %4u                        -- %s --");
 
@@ -167,7 +168,11 @@ int gen_status_bar(char *status_bar)
         case BOTTOMLINE_MODE:
             switch (bottomline_sub_mode)
             {
-                case BOTTOM_LINE_FILENAME:
+                case BOTTOM_LINE_FILENAME_SAVE:
+                    sprintf(status_bar, ":%s", bottomline_text);
+                    break;
+
+                case BOTTOM_LINE_FILENAME_OPEN:
                     sprintf(status_bar, ":%s", bottomline_text);
                     break;
 
@@ -238,7 +243,8 @@ int __redraw_ui_win()
     strcpy(title_bar,
            "vic - ");
     strcpy(menu_bar,
-           "New File[1,n] Save[2,s]                                --  menu  --");
+//           "New File[1,n] Save[2,s]                                --  menu  --");
+           "New File[1,n] Save[2,s] Open[3,:]                      --  menu  --");
     strcpy(status_bar_template,
            "status: Line: %4u Column: %4u                        -- %s --");
 

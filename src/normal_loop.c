@@ -297,7 +297,16 @@ int normal_mode_process(int key_down)
             goto_line_start();
             break;
 
+        case '3':
         case ':':   //bottom line command mode.
+            //Now I wanna use this as open file command.
+            if (changed_flag == CHANGED)
+            {
+                changed_flag = UNSAVED;
+                break;
+            }
+            mode_flag = BOTTOMLINE_MODE;
+            bottomline_sub_mode = BOTTOM_LINE_FILENAME_OPEN;
             break;
 
         case '/':    //bottom line and search.
@@ -308,7 +317,7 @@ int normal_mode_process(int key_down)
             if (strlen(cur_file_name) == 0)
             {
                 mode_flag = BOTTOMLINE_MODE;
-                bottomline_sub_mode = BOTTOM_LINE_FILENAME;
+                bottomline_sub_mode = BOTTOM_LINE_FILENAME_SAVE;
             }
             else
             {

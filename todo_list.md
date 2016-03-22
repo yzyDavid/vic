@@ -21,15 +21,20 @@ having bug, when adjusted the window size, error occurred.
 * implements menu bar
 
 * implements new file. open/save file, etc.
+save file and assigning file name is finished.
+aiming to finish open file.
 
 * take nano as a goal.
 
-* new file , add chars and save has segfault.
+* new file, add chars and save has segfault.
+needing more test.
 
 * highlight string, comments, etc.
+i don't wanna implement this function.
 
 * redesign drawing methods
 	cross platform should be considered.
+	nearly finished, needing more test.
 
 ####below finished, curses are not taken.
 * allowing resize window.
