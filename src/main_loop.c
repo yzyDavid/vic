@@ -4,10 +4,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include "main.h"
 
 #ifdef __VIC_WIN
+
+#include <conio.h>
+
+#endif
+
+#ifdef __VIC_WIN
+
 #include <windows.h>
 #include <wincon.h>
+
 #endif
 
 #include "main_loop.h"
@@ -34,6 +43,7 @@ int main_loop()
 
 #ifdef __VIC_WIN
         key_down = __get_char_win();
+//        key_down = getch();
 #endif
 
         switch (mode_flag)
@@ -82,7 +92,6 @@ int is_position_in_file()
 
     return 1;
 }
-
 
 
 #pragma clang diagnostic pop

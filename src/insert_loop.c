@@ -16,6 +16,7 @@
 #include "file_sl.h"
 #include "draw_ui.h"
 #include "normal_loop.h"
+#include "log_module.h"
 
 int insert_mode_process(int key_down)
 {
@@ -30,6 +31,11 @@ int insert_mode_process(int key_down)
 #ifdef __VIC_POSIX
     int second_key_down = 0;
 #endif
+
+    if (key_down < 0)
+    {
+        return -1;
+    }
 
     switch (key_down)
     {
@@ -138,6 +144,7 @@ int insert_mode_process(int key_down)
 #endif
 
         case '\x7f':  //backspace
+        case '\x08':    //backspace in windows.
             if (actual_column != 1)
             {
                 del_char(get_line(cur_file, cur_top + cur_line - 1), cur_left + cur_column - 3);
@@ -180,15 +187,21 @@ int insert_mode_process(int key_down)
             changed_flag = CHANGED;
             break;
 
-#ifdef __VIC_WIN
         case '\xe0':    //first(or last maybe?) ascii of arrow keys.
-        case '\x00':
+            print_log("\xe0");
+            return -1;
             break;
-#endif
+
+        case '\x00':
+            print_log("\x00");
+            return -1;
+            break;
+
         default:
             add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
             cursor_right();
             changed_flag = CHANGED;
+            print_log("default");
             break;
     }
     return 0;

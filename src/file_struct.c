@@ -199,6 +199,11 @@ int parse_highlighting(v_file_text *file_struct)
     int lines = get_total_lines(cur_file);
     char **highlight_list;
     char word_temp[FILE_LINE_LENGTH];
+    for (i = 0; i < lines; i++)
+    {
+        v_line *line = get_line(cur_file, (unsigned int) (i + 1));
+        memset(line->info, 0, FILE_LINE_LENGTH);
+    }
     switch (cur_file_type)
     {
         case C_SOURCE:

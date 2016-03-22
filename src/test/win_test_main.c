@@ -8,10 +8,11 @@
 
 int main()
 {
-    int i=100;
+    int i = 100;
     while (i--)
     {
         printf("%x\n", getch());
+        printf("%x\n", (char) (0xe0 & 0xff));
         /*
         switch (getch())
         {

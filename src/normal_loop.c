@@ -19,12 +19,17 @@
 #include "termios_set.h"
 #include "file_sl.h"
 #include "bottomline_loop.h"
+#include "log_module.h"
 
 int normal_mode_process(int key_down)
 {
 #ifdef __VIC_POSIX
     int second_key_down = 0;
 #endif
+
+    char t[100];
+    sprintf(t, "%x", key_down);
+    print_log(t);
 
     switch (key_down)
     {
