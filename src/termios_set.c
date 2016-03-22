@@ -166,7 +166,8 @@ int __get_self_window_win()
 int __get_char_win()
 {
     char ch = (char) getch();
-    return ch > 0 ? ch : 0;
+//    return ch > 0 ? ch : 0;
+    return ch;
     return getchar();
     PINPUT_RECORD pBuffer = NULL;
     pBuffer = malloc(1024 * 64);

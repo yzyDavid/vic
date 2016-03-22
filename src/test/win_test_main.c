@@ -12,7 +12,7 @@ int main()
     while (i--)
     {
         printf("%x\n", getch());
-        printf("%x\n", (char) (0xe0 & 0xff));
+        printf("%x\n", (0x000000e0));
         /*
         switch (getch())
         {

@@ -58,6 +58,7 @@ int v_load_file(const char *filename, v_file_text *file_struct)
             cur_line->next = malloc(sizeof(v_line));
             cur_line = cur_line->next;
             cur_line->next = NULL;
+            memset(cur_line->text, 0, FILE_LINE_LENGTH);
             *cur_char = 0;
             cur_char = cur_line->text;
         }
@@ -96,7 +97,7 @@ int v_save_file(const char *filename, v_file_text *file_struct)
         cur_line = cur_line->next;
         cur_char = cur_line->text;
     }
-    while (cur_line->next != NULL);
+    while (NULL != cur_line);
     fclose(fp);
     return 0;
 }

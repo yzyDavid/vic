@@ -17,6 +17,7 @@
 #include "draw_ui.h"
 #include "normal_loop.h"
 #include "log_module.h"
+#include "termios_set.h"
 
 int insert_mode_process(int key_down)
 {
@@ -125,21 +126,28 @@ int insert_mode_process(int key_down)
             break;
              */
 
-        case '\x48':    //up
-            cursor_up();
-            break;
+        case 0x000000e0:    //first(or last maybe?) ascii of arrow keys.
+            switch (__get_char_win())
+            {
+                case '\x48':    //up
+                    cursor_up();
+                    break;
 
-        case '\x50':    //down
-            cursor_down();
-            break;
+                case '\x50':    //down
+                    cursor_down();
+                    break;
 
-        case '\x4b':    //left
-            cursor_left();
-            break;
+                case '\x4b':    //left
+                    cursor_left();
+                    break;
 
-        case '\x4d':    //right
-            cursor_right();
-            break;
+                case '\x4d':    //right
+                    cursor_right();
+                    break;
+
+                default:
+                    break;
+            }
 
 #endif
 
@@ -185,16 +193,6 @@ int insert_mode_process(int key_down)
             cursor_down();
             goto_line_start();
             changed_flag = CHANGED;
-            break;
-
-        case '\xe0':    //first(or last maybe?) ascii of arrow keys.
-            print_log("\xe0");
-            return -1;
-            break;
-
-        case '\x00':
-            print_log("\x00");
-            return -1;
             break;
 
         default:
