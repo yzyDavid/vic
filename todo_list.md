@@ -13,6 +13,7 @@
 
 ##todo memo:
 * get terminal lines on windows should be implements.
+having bug, when adjusted the window size, error occurred.
 
 * getchar / WIN32 API / getch
   all can be taken into consideration.

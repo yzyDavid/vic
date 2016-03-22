@@ -8,9 +8,21 @@
 
 int main()
 {
-    while (1)
+    int i=100;
+    while (i--)
     {
         printf("%x\n", getch());
+        /*
+        switch (getch())
+        {
+            default:
+                break;
+            case '\xe0':
+                if (getch() == '\x48')
+                    printf("up\n");
+                break;
+        }
+         */
     }
     return 0;
 }

@@ -1,0 +1,19 @@
+Enter:
+d
+Up Arrow:
+e0
+48
+Down Arrow:
+e0
+50
+Left Arrow:
+e0
+4b
+Right Arrow:
+e0
+4d
+Esc:
+1b
+Space:
+20
+

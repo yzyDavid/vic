@@ -1,9 +1,16 @@
 //
 // Created by yzy on 3/13/16.
 //
+#include "main.h"
 
 #include <assert.h>
 #include <stdlib.h>
+
+#ifdef __VIC_WIN
+
+#include <conio.h>
+
+#endif
 
 #include "normal_loop.h"
 #include "file_struct.h"
@@ -15,7 +22,10 @@
 
 int normal_mode_process(int key_down)
 {
+#ifdef __VIC_POSIX
     int second_key_down = 0;
+#endif
+
     switch (key_down)
     {
         case '\x1b':  //Esc
@@ -57,6 +67,52 @@ int normal_mode_process(int key_down)
 
 #endif
             break;
+
+#ifdef __VIC_WIN
+
+            /*
+        case '\xe0':    //first(or last maybe?) ascii of arrow keys.
+        case '\x00':
+            switch (getch())
+            {
+                case '\x48':    //up
+                    cursor_up();
+                    break;
+
+                case '\x50':    //down
+                    cursor_down();
+                    break;
+
+                case '\x4b':    //left
+                    cursor_left();
+                    break;
+
+                case '\x4d':    //right
+                    cursor_right();
+                    break;
+
+                default:
+                    break;
+            }
+            break;
+             */
+
+        case '\x48':    //up
+            cursor_up();
+            break;
+
+        case '\x50':    //down
+            cursor_down();
+            break;
+
+        case '\x4b':    //left
+            cursor_left();
+            break;
+
+        case '\x4d':    //right
+            cursor_right();
+            break;
+#endif
 
         case '!':   //quit directly.
             enable_display_back();
@@ -256,6 +312,10 @@ int normal_mode_process(int key_down)
             }
             break;
 
+#ifdef __VIC_WIN
+        case '\x00':
+        case '\xe0':
+#endif
         default:
             break;
     }
@@ -368,7 +428,7 @@ int cursor_down()
 {
     unsigned int length = 0;
     unsigned int lines = 0;
-    unsigned int actual_column = 0;
+//    unsigned int actual_column = 0;
 
     lines = get_total_lines(cur_file);
     cur_line++;
@@ -380,7 +440,7 @@ int cursor_down()
     }
 
     length = (unsigned int) strlen((const char *) get_line(cur_file, cur_line + cur_top - 1));
-    actual_column = cur_left + cur_column - 1;
+//    actual_column = cur_left + cur_column - 1;
 
     if (is_position_in_file())
     {
@@ -481,7 +541,7 @@ int goto_line_actual_start()
     unsigned int actual_column = 0;
     actual_column = cur_left + cur_column - 1;
     unsigned int repeat = actual_column - 1;
-    unsigned length = get_length(get_line(cur_file, cur_top + cur_line - 1));
+//    unsigned length = get_length(get_line(cur_file, cur_top + cur_line - 1));
     char *pos = get_line(cur_file, cur_top + cur_line - 1)->text;
     while (repeat > 0)
     {

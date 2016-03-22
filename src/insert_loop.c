@@ -1,8 +1,13 @@
 //
 // Created by yzy on 3/13/16.
 //
+
+#include "main.h"
+
 #ifdef __VIC_WIN
+
 #include <conio.h>
+
 #endif
 
 #include <stdio.h>
@@ -18,11 +23,13 @@ int insert_mode_process(int key_down)
     length = get_length(get_line(cur_file, cur_line + cur_top - 1));
 
     unsigned int actual_column = 0;
-    unsigned int actual_line = 0;
+//    unsigned int actual_line = 0;
     actual_column = cur_column + cur_left - 1;
-    actual_line = cur_line + cur_top - 1;
+//    actual_line = cur_line + cur_top - 1;
 
+#ifdef __VIC_POSIX
     int second_key_down = 0;
+#endif
 
     switch (key_down)
     {
@@ -67,6 +74,8 @@ int insert_mode_process(int key_down)
 #endif
 
 #ifdef __VIC_WIN
+            mode_flag = NORMAL_MODE;
+            /*
             second_key_down = getch();
             switch (second_key_down)
             {
@@ -77,8 +86,56 @@ int insert_mode_process(int key_down)
                 default:
                     break;
             }
+             */
+
 #endif
             break;
+
+#ifdef __VIC_WIN
+
+            /*
+        case '\xe0':    //first ascii of arrow keys.
+            switch (getch())
+            {
+                case '\x48':    //up
+                    cursor_up();
+                    break;
+
+                case '\x50':    //down
+                    cursor_down();
+                    break;
+
+                case '\x4b':    //left
+                    cursor_left();
+                    break;
+
+                case '\x4d':    //right
+                    cursor_right();
+                    break;
+
+                default:
+                    break;
+            }
+            break;
+             */
+
+        case '\x48':    //up
+            cursor_up();
+            break;
+
+        case '\x50':    //down
+            cursor_down();
+            break;
+
+        case '\x4b':    //left
+            cursor_left();
+            break;
+
+        case '\x4d':    //right
+            cursor_right();
+            break;
+
+#endif
 
         case '\x7f':  //backspace
             if (actual_column != 1)
@@ -123,6 +180,11 @@ int insert_mode_process(int key_down)
             changed_flag = CHANGED;
             break;
 
+#ifdef __VIC_WIN
+        case '\xe0':    //first(or last maybe?) ascii of arrow keys.
+        case '\x00':
+            break;
+#endif
         default:
             add_char(cur_file, cur_line + cur_top - 1, cur_column + cur_left - 1, (char) key_down);
             cursor_right();
